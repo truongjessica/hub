@@ -1,0 +1,64 @@
+*{
+    box-sizing: border-box
+}
+
+body {
+    margin: 0;
+}
+
+.nav {
+    background-color: white;
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 2rem;
+    padding: 0 1rem;
+
+
+}
+
+.container {
+    margin: 1rem;
+    text-align: center;
+  }
+
+.site-title {
+    font-size: 2rem;
+}
+
+.nav ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+}
+
+.nav a {
+    color: inherit;
+    text-decoration: none;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: .25rem;
+}
+
+.nav-links {
+    display: inline-block;
+    height: 20px;
+    background-color: white;
+    /*will change background-color of element */
+    color: #ff6325;
+    /*will change color of text within the element */
+}
+
+.nav-links:hover {
+    background-color: #ff6325;
+}
+
+.p1 {
+    font-family: "Times New Roman", Times, serif;
+  }
+  
+
