@@ -2,7 +2,7 @@ const FlashCards = () => {
     
     return (
     <div className="FlashCards">
-        <h1>FlashCards will go here</h1>
+        <h1>Flashcards will go here</h1>
     </div>
     );
 }
