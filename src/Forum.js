@@ -2,7 +2,7 @@ const Forum = () => {
     
     return (
     <div className="Forum">
-        <h1>Forum</h1>
+        <h1>Forum will go here</h1>
     </div>
     );
 }
