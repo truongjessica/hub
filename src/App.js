@@ -1,6 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import NavbarComponent from "./components/NavbarComponent";
-import { FlashCard, Group, Home, VideoCall, Forum, Error, JoinTeam, CreateTeam } from "./pages";
+import { FlashCard, Group, Home, VideoCall, Forum, Error, JoinTeam, CreateTeam, Register, Login } from "./pages";
 import "./App.css";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -19,6 +19,8 @@ function App() {
           <Route path="/join-team" element=<JoinTeam /> />
           <Route path="/create-team" element=<CreateTeam /> />
           <Route path="/meeting" element=<VideoCall /> />
+          <Route path="/register" element=<Register /> />
+          <Route path="/login" element=<Login /> />
           <Route path="*" element=<Error /> />
         </Route>
       </Routes>
