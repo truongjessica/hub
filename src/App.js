@@ -1,5 +1,5 @@
-// import 'bootstrap/dist/css/bootstrap.min.css';
-// import NavbarComponent from './components/NavbarComponent';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import NavbarComponent from './components/NavbarComponent';
 import './App.css';
 import Forum from './Forum'
 
@@ -7,14 +7,13 @@ import {
   BrowserRouter,
   Routes,
   Route,
-
 } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
       <div><h1>Navbar</h1></div>
-      {/* <Navbar /> */}
+      <NavbarComponent/>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Forum />} />
@@ -25,6 +24,5 @@ function App() {
   );
 }
 
-
-
 export default App;
+
