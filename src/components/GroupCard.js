@@ -3,7 +3,7 @@ const GroupCard = ({
 }) => {
     
     return (
-    <div class="card m-2 p-5" className="GroupCard">
+    <div class="card m-2 p-5">
         <h1>{ groupname }</h1>
     </div>
     );
