@@ -2,7 +2,7 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
-const Group = () => {
+const JoinTeam = () => {
   return (
     <div>
       <Card
@@ -36,4 +36,4 @@ const Group = () => {
   );
 };
 
-export default Group;
+export default JoinTeam;
