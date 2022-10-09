@@ -12,7 +12,6 @@ import {
 function App() {
   return (
     <div className="App">
-      <div><h1>Navbar</h1></div>
       <NavbarComponent/>
       <BrowserRouter>
         <Routes>
