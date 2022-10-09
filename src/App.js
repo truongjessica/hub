@@ -1,8 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import NavbarComponent from "./components/NavbarComponent";
-import Card from "react-bootstrap/Card";
+import { FlashCard, Group, Home, VideoCall, Forum, Error } from "./pages";
 import "./App.css";
-import Forum from "./pages/Forum";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SharedLayout from "./pages/SharedLayout";
@@ -11,8 +10,14 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element=<SharedLayout /> />
-        {/* <Route path="/Flashcards" element={<FlashCards />} /> */}
+        <Route path="/" element=<SharedLayout />>
+          <Route index element=<Home />></Route>
+          <Route path="/flash-cards" element=<FlashCard /> />
+          <Route path="/forum" element=<Forum /> />
+          <Route path="/groups" element=<Group /> />
+          <Route path="/video-call" element=<VideoCall /> />
+          <Route path="*" element=<Error /> />
+        </Route>
       </Routes>
     </BrowserRouter>
   );

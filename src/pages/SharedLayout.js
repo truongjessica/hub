@@ -4,9 +4,9 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 const SharedLayout = () => {
   return (
-    <main className="dashboard">
+    <main>
       <Navbar />
-      <div className="dashboard-page">
+      <div>
         <Outlet />
       </div>
       <Footer />
