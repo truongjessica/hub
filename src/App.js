@@ -14,8 +14,8 @@ function App() {
           <Route index element=<Home />></Route>
           <Route path="/flash-cards" element=<FlashCard /> />
           <Route path="/forum" element=<Forum /> />
-          <Route path="/groups" element=<Group /> />
-          <Route path="/video-call" element=<VideoCall /> />
+          <Route path="/group" element=<Group /> />
+          <Route path="/meeting" element=<VideoCall /> />
           <Route path="*" element=<Error /> />
         </Route>
       </Routes>
@@ -24,38 +24,3 @@ function App() {
 }
 
 export default App;
-
-{
-  /* <div className="App">
-  <NavbarComponent />
-
-  <div
-    class="container"
-    style={{
-      position: "absolute",
-      left: "50%",
-      top: "50%",
-      transform: "translate(-50%, -50%)",
-    }}
-  >
-    <div class="row">
-      <div class="col-lg-6 mb-4">
-        <Card>
-          <Card.Body>
-            <Card.Title>Create A Team</Card.Title>
-            <Card.Text></Card.Text>
-          </Card.Body>
-        </Card>
-      </div>
-      <div class="col-lg-6 mb-4">
-        <Card>
-          <Card.Body>
-            <Card.Title>Join Your Team</Card.Title>
-            <Card.Text></Card.Text>
-          </Card.Body>
-        </Card>
-      </div>
-    </div>
-  </div>
-</div>; */
-}
