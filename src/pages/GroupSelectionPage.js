@@ -1,7 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import Card from "react-bootstrap/Card";
 
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 
 function GroupSelectionPage() {
   return (
