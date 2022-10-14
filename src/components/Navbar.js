@@ -2,13 +2,15 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 const Navbar = () => {
+  var logo = require('../assets/logo.png');
   return (
     <Wrapper>
       <nav class="navbar navbar-expand-lg bg-light">
         <div className="container-lg text-center">
           <div className="col-4">
-            <a className="navbar-brand" href="#">
-              Helper Hacker
+            <a className="navbar-brand" href="#" style={{color:"green",fontWeight: 'bold'}}>
+            <img src={logo}  style={{width:"20%",}}/>
+                 Helper Hacker
             </a>
           </div>
           <div className="col-6">

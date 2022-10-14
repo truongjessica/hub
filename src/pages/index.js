@@ -1,4 +1,6 @@
 import FlashCard from "./FlashCard";
+import Login from "./Login";
+import Register from "./Register";
 import Group from "./GroupSelectionPage";
 import CreateTeam from "./CreateTeam";
 import JoinTeam from "./JoinTeam";

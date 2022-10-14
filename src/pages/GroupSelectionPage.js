@@ -17,17 +17,17 @@ function GroupSelectionPage() {
       >
         <div class="row">
           <div class="col-lg-6 mb-4">
-            <Card>
+            <Card hoverable>
               <Card.Body>
-                <Card.Title>Create A Team</Card.Title>
+                <Card.Title style={{color:"#F2831A",}}>Create A Team</Card.Title>
                 <Card.Text></Card.Text>
               </Card.Body>
             </Card>
           </div>
           <div class="col-lg-6 mb-4">
-            <Card>
+            <Card hoverable>
               <Card.Body>
-                <Card.Title>Join Your Team</Card.Title>
+                <Card.Title style={{color:"#F2831A",}}>Join Your Team</Card.Title>
                 <Card.Text></Card.Text>
               </Card.Body>
             </Card>
