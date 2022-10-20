@@ -73,7 +73,7 @@ function Register() {
           </button>
         </div>
         <p className="forgot-password text-right">
-          Already registered <a href="/sign-in">sign in?</a>
+          Already registered? <a href="/sign-in">Sign in</a>
         </p>
       </form>
     </Wrapper>
