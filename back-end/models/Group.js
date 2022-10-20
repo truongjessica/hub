@@ -9,13 +9,14 @@ const GroupSchema = mongoose.Schema(
     },
     nb_members: {
       type: Number,
-      required: true,
+      default: 1,
     },
-    user: {
-      type: mongoose.Types.ObjectId,
-      ref: "User",
-      required: true,
-    },
+    user: [
+      {
+        type: mongoose.Types.ObjectId,
+        ref: "User",
+      },
+    ],
   },
   { timestamps: true }
 );
