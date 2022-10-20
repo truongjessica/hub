@@ -1,8 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import Card from "react-bootstrap/Card";
 
-
-
 function GroupSelectionPage() {
   return (
     <div className="GroupSelectionPage">
@@ -19,7 +17,11 @@ function GroupSelectionPage() {
           <div class="col-lg-6 mb-4">
             <Card hoverable>
               <Card.Body>
-                <Card.Title style={{color:"#F2831A",}}>Create A Team</Card.Title>
+                <a href="/create-team">
+                  <Card.Title style={{ color: "#F2831A" }}>
+                    Create A Team
+                  </Card.Title>{" "}
+                </a>
                 <Card.Text></Card.Text>
               </Card.Body>
             </Card>
@@ -27,7 +29,11 @@ function GroupSelectionPage() {
           <div class="col-lg-6 mb-4">
             <Card hoverable>
               <Card.Body>
-                <Card.Title style={{color:"#F2831A",}}>Join Your Team</Card.Title>
+              <a href="/join-team">
+                <Card.Title style={{ color: "#F2831A" }}>
+                  Join Your Team
+                </Card.Title>
+                </a>
                 <Card.Text></Card.Text>
               </Card.Body>
             </Card>
