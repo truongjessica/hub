@@ -9,7 +9,6 @@ const SharedLayout = () => {
       <div className="container-lg">
         <Outlet />
       </div>
-      <Footer />
     </main>
   );
 };
