@@ -32,7 +32,7 @@ const register = async (req, res) => {
     role,
     verificationToken,
   });
-  const origin = "http://localhost:3000";
+  const origin = "http://localhost:7000";
   // const newOrigin = 'https://react-node-user-workflow-front-end.netlify.app';
 
   // const tempOrigin = req.get('origin');
@@ -92,13 +92,13 @@ const login = async (req, res) => {
   if (!user.isVerified) {
     throw new CustomError.UnauthenticatedError("Please verify your email");
   }
+
   const tokenUser = createTokenUser(user);
 
   // create refresh token
   let refreshToken = "";
   // check for existing token
   const existingToken = await Token.findOne({ user: user._id });
-
   if (existingToken) {
     const { isValid } = existingToken;
     if (!isValid) {
