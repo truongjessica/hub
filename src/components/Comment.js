@@ -14,16 +14,16 @@ const Comment = ({
             <Container >
                 <Row >
                     <Col sm={1}>
-                        <img src={image} alt="" width={50}/>
+                        <img src={image} style={{opacity: 0.65}} alt="" width={50}/>
                     </Col>
-                    <Col sm={3}>
+                    <Col sm={2}>
                         <Row class="float-start ">
-                            <div class="text-start">{ name }</div>
-                            <div class="text-start">{ username }</div>
+                            <div class="text-start" style={{color:'orange'}}>{ name }</div>
+                            <div class="text-start" style={{opacity:0.4}}>{ username }</div>
                         </Row>
                     </Col>
                     <Col>
-                        <div class="float-start">{ message }</div>
+                        <div class="float-start" style={{opacity: 0.80}}>{ message }</div>
                     </Col>
                 </Row>
 

@@ -1,0 +1,43 @@
+
+.main {
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(to right top, #65dfc9, #6cdbeb);
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+  }
+
+  .glass {
+    max-height: 50rem;
+    background: white;
+    /* width: 90%; */
+    background: linear-gradient(
+      to right bottom,
+      rgba(153, 22, 22, 0.7),
+      rgba(145, 145, 145, 0.3)
+    );
+    border-radius: 2rem;
+    /* z-index: 2; */
+    backdrop-filter: blur(2rem);
+  }
+
+  .dashboard {
+    background: linear-gradient(
+      to right bottom,
+      rgba(240, 176, 0, 0.7),
+      rgba(206, 105, 22, 0.3)
+    );
+    border-radius: 2rem;
+  }
+
+.group::-webkit-scrollbar {
+    display: none;
+}
+
+.posts::-webkit-scrollbar {
+    display: none;
+}
+
+.selectedGroup {
+    background: black;
+}
