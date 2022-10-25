@@ -19,6 +19,10 @@ const connectDB = require("./db/connect");
 
 //  routers
 const userRouter = require("./routes/userRoutes");
+const groupRouter = require("./routes/groupRoutes");
+const postRouter = require("./routes/postRoute");
+const authRouter = require("./routes/authRoutes");
+const cardRouter = require("./routes/cardRoutes");
 
 // middleware
 const notFoundMiddleware = require("./middleware/not-found");
@@ -43,11 +47,15 @@ app.use(express.static("./public"));
 app.use(fileUpload());
 
 app.use("/api/v1/users", userRouter);
+app.use("/api/v1/posts", postRouter);
+app.use("/api/v1/groups", groupRouter);
+app.use("/api/v1/cards", cardRouter);
+app.use("/api/v1/auth", authRouter);
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 7000;
 const start = async () => {
   try {
     await connectDB(process.env.MONGO_URL);
