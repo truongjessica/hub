@@ -8,31 +8,28 @@ const Home = () => {
       <div className="container-lg">
         <div className="img-wrapper container">
           <img src={imageSrc} className="img-fluid" alt="" />
-       <Image2><img src={imageSrc1}  className="circle"/>
-       </Image2> 
-       </div>
+          <Image2>
+            <img src={imageSrc1} className="circle" />
+          </Image2>
+        </div>
       </div>
       <div className="container-sml">
-        <Text>
-        The Ultimate communication platform
-        </Text>
+        <Text>The Ultimate communication platform</Text>
       </div>
       <div>
         <Text2>
-        Provide multiple tools to help students and instructors to commucate easier. Help creating a friendly environment for team building and group meeting for students. 
+          Provide multiple tools to help students and instructors to commucate
+          easier. Help creating a friendly environment for team building and
+          group meeting for students.
         </Text2>
-        
         <div className="sml">
-        <ButtonStyle>
-        <Button>Register Now</Button>
-      <Button primary>Read More</Button>
-      </ButtonStyle>
+          <ButtonStyle>
+            <Button>Register Now</Button>
+            <Button primary>Read More</Button>
+          </ButtonStyle>
         </div>
-        </div>
-      </Wrapper>
-
- 
-
+      </div>
+    </Wrapper>
   );
 };
 
@@ -42,36 +39,39 @@ const Wrapper = styled.div`
   img {
     width: 100%;
     max-width: 350px;
-    float: right;    
+    float: right;
     margin: 0 0 0 15px;
   }
 `;
 
 const Text = styled.div`
-position: absolute; left:130px;top:150px;
-font-size: 55px;
-font-weight: bold;
-float: left;  
-width: 30%
-  
+  position: absolute;
+  left: 130px;
+  top: 150px;
+  font-size: 55px;
+  font-weight: bold;
+  float: left;
+  width: 30%;
 `;
 
 const Image2 = styled.div`
-width: 55%;
-position: absolute; right:700px;top:150px;
-
+  width: 55%;
+  position: absolute;
+  right: 700px;
+  top: 150px;
 `;
 
 const Text2 = styled.div`
-width: 40%;
-font-size: 15px;
-position: absolute; left:100px;top:450px;
-
+  width: 40%;
+  font-size: 15px;
+  position: absolute;
+  left: 100px;
+  top: 450px;
 `;
 
 const Button = styled.button`
-  background: ${props => props.primary ? "#F2831A" : "white"};
-  color: ${props => props.primary ? "white" : "#F2831A"};
+  background: ${(props) => (props.primary ? "#F2831A" : "white")};
+  color: ${(props) => (props.primary ? "white" : "#F2831A")};
 
   font-size: 1em;
   margin: 1em;
@@ -82,5 +82,7 @@ const Button = styled.button`
 `;
 
 const ButtonStyle = styled.div`
-  position: absolute;left:100px; top:530px;
+  position: absolute;
+  left: 100px;
+  top: 530px;
 `;
