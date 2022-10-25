@@ -3,7 +3,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import GroupCard from "../components/GroupCard";
-import userIcon from "../images/user.png";
+import styled from "styled-components";
 import Card from "react-bootstrap/Card";
 
 var cards = [
@@ -19,17 +19,24 @@ const FlashCard = () => {
       <Container>
         <Row>
           <Col sm={7}>
-            <Card style={{ color: "#F2831A" }}>
+            <Card style={{ height: '75%' }}>
               <Card.Body>
-                <Card.Title style={{ color: "#F2831A" }}>
-                  MAIN FlashCard
+                <Card.Title>
+                  MAIN FLASHCARD
                 </Card.Title>{" "}
                 <Card.Text></Card.Text>
               </Card.Body>
             </Card>
           </Col>
+          {/* TODO: fix button position to be below main card */}
+          {/* <div className="sml">
+          <ButtonStyle>
+            <Button>Register Now</Button>
+            <Button primary>Read More</Button>
+          </ButtonStyle>
+        </div> */}
           <Col sm={5}>
-            <div class="m-4 h-75 overflow-auto">
+            <div class="m-1 overflow-auto">
               {cards.map((group) => (
                 <GroupCard groupname={group.groupname} />
               ))}
@@ -42,3 +49,21 @@ const FlashCard = () => {
 };
 
 export default FlashCard;
+
+const Button = styled.button`
+  background: ${(props) => (props.primary ? "#F2831A" : "white")};
+  color: ${(props) => (props.primary ? "white" : "#F2831A")};
+
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border: 2px solid #F2831A;
+  border-radius: 10px;
+  position: right:200px; top:400px;
+`;
+
+const ButtonStyle = styled.div`
+  position: absolute;
+  left: 100px;
+  top: 530px;
+`;
