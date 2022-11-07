@@ -2,6 +2,8 @@ import React from "react";
 import imageSrc from "../assets/home1.png";
 import imageSrc1 from "../assets/Home2.png";
 import styled from "styled-components";
+import { Outlet, Link } from "react-router-dom";
+
 const Home = () => {
   return (
     <Wrapper>
@@ -18,13 +20,21 @@ const Home = () => {
       </div>
       <div>
         <Text2>
-          Provide multiple tools to help students and instructors to commucate
+          Provide multiple tools to help students and instructors to communicate
           easier. Help creating a friendly environment for team building and
           group meeting for students.
         </Text2>
         <div className="sml">
           <ButtonStyle>
-            <Button>Register Now</Button>
+            
+            
+          
+                <Link to="/register" > 
+                <Button>Register</Button>
+                 </Link>
+            
+              
+              
             <Button primary>Read More</Button>
           </ButtonStyle>
         </div>
@@ -57,7 +67,7 @@ const Text = styled.div`
 const Image2 = styled.div`
   width: 55%;
   position: absolute;
-  right: 700px;
+  right: 890px;
   top: 150px;
 `;
 
