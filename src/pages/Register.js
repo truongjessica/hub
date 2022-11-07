@@ -68,12 +68,12 @@ function Register() {
           />
         </div>
         <div className="d-grid">
-          <button type="submit" className="btn btn-primary">
+          <Button>
             Sign Up
-          </button>
+          </Button>
         </div>
         <p className="forgot-password text-right">
-          Already registered? <a href="/sign-in">Sign in</a>
+          Already registered? <a href="/login">Sign in</a>
         </p>
       </form>
     </Wrapper>
@@ -83,5 +83,19 @@ const Wrapper = styled.section`
   margin-top: 1.5rem;
   max-width: 750px;
   margin: 1.5rem auto;
+
 `;
+
+const Button = styled.button`
+  background:#F2831A ;
+  color: white;
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border: 2px solid #F2831A;
+  border-radius: 10px;
+  position: right:200px; top:400px;
+`;
+
+
 export default Register;
