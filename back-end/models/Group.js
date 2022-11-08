@@ -23,12 +23,6 @@ const GroupSchema = mongoose.Schema(
     code: {
       type: String,
     },
-    user: [
-      {
-        type: mongoose.Types.ObjectId,
-        ref: "User",
-      },
-    ],
   },
   { timestamps: true }
 );

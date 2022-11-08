@@ -20,9 +20,10 @@ const getSingleUser = async (req, res) => {
   checkPermissions(req.user, user._id);
   res.status(StatusCodes.OK).json({ user });
 };
-
+// For testing Purpose
 const showCurrentUser = async (req, res) => {
-  res.status(StatusCodes.OK).json({ user: req.user });
+  const user = await User.findById({ _id: req.user.userId });
+  res.status(StatusCodes.OK).json({ user });
 };
 const updateUser = async (req, res) => {
   const { email, name } = req.body;

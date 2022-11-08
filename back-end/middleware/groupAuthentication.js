@@ -1,0 +1,14 @@
+const CustomError = require("../errors");
+const Group = require("../models/Group");
+const User = require("../models/User");
+const groupCheckVerification = async (req, res, next) => {
+  const { userId } = req.user;
+  const { id } = req.params;
+  const group = await Group.findOne({ _id: id });
+  const user = await User.findOne({ _id: userId, groups: { $in: group._id } });
+  if (!user) {
+    throw new CustomError.UnauthorizedError(`Not authorized to access`);
+  }
+  next();
+};
+module.exports = groupCheckVerification;
