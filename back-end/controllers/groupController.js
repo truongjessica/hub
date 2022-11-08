@@ -14,7 +14,7 @@ const createGroup = async (req, res) => {
   const {
     user: { userId },
   } = req;
-  const group = await Group.create({ ...req.body, user: userId });
+  const group = await Group.create({ ...req.body, admin: userId });
   await User.findByIdAndUpdate(
     { _id: userId },
     { $addToSet: { groups: [group._id] }, groupVerification: true }
@@ -34,6 +34,9 @@ const getSingleGroup = async (req, res) => {
 };
 
 const updateGroup = async (req, res) => {
+  if (!req.admin) {
+    throw new CustomError.UnauthorizedError("Only admin can modify group");
+  }
   const { id } = req.params;
   const group = await Group.findOne({ _id: id });
   if (!group) {
@@ -45,6 +48,9 @@ const updateGroup = async (req, res) => {
 };
 const removeGroup = async (req, res) => {
   const { id } = req.params;
+  if (!req.admin) {
+    throw new CustomError.UnauthorizedError("Only admin can delete group");
+  }
   const group = await Group.findOne({ _id: id });
   if (!group) {
     throw new CustomError.NotFoundError(`Can't find a group with name ${id}`);
