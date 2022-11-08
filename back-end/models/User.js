@@ -34,12 +34,6 @@ const UserSchema = new mongoose.Schema({
       ref: "Group",
     },
   ],
-  posts: [
-    {
-      type: mongoose.Types.ObjectId,
-      ref: "Post",
-    },
-  ],
   groupVerification: {
     type: Boolean,
     default: false,

@@ -24,13 +24,17 @@ const createCard = async (req, res) => {
 };
 
 const getSingleCard = async (req, res) => {
-  const card = await Card.findOne({ title: req.params.title });
-  if (!card) {
-    throw new CustomError.NotFoundError(
-      `No card with title : ${req.params.title}`
-    );
+  const { userId } = req.user;
+  const { id } = req.params;
+  const card = await Card.findById({ _id: id });
+  const user = await User.findById({
+    _id: userId,
+    groups: { $in: card.group },
+  });
+  if (!user) {
+    throw new CustomError.UnauthorizedError(`Can't access this card`);
   }
-  res.status(StatusCodes.OK).send("Get Single Card");
+  res.status(StatusCodes.OK).json({ card });
 };
 
 const updateCard = async (req, res) => {
@@ -39,12 +43,13 @@ const updateCard = async (req, res) => {
   const card = await Card.findById({ _id: id });
   const user = await User.findById({
     _id: userId,
-    groups: { $in: card.group._id },
+    groups: { $in: card.group },
   });
   if (!user) {
-    throw new CustomError.UnauthorizedError(`Can't modified this card`);
+    throw new CustomError.UnauthorizedError(`Can't access this card`);
   }
-  res.status(StatusCodes.OK).json({ msg: "update done" });
+  await Card.findByIdAndUpdate({ _id: id }, req.body);
+  res.status(StatusCodes.OK).json({ msg: "Update done" });
 };
 
 const removeCard = async (req, res) => {
