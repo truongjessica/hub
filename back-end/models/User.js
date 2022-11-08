@@ -28,16 +28,10 @@ const UserSchema = new mongoose.Schema({
     enum: ["admin", "user"],
     default: "user",
   },
-  Groups: [
+  groups: [
     {
       type: mongoose.Types.ObjectId,
       ref: "Group",
-    },
-  ],
-  flashCards: [
-    {
-      type: mongoose.Types.ObjectId,
-      ref: "Flashcard",
     },
   ],
   posts: [
@@ -65,8 +59,6 @@ const UserSchema = new mongoose.Schema({
 });
 
 UserSchema.pre("save", async function () {
-  // console.log(this.modifiedPaths());
-  // console.log(this.isModified('name'));
   if (!this.isModified("password")) return;
   const salt = await bcrypt.genSalt(10);
   this.password = await bcrypt.hash(this.password, salt);
