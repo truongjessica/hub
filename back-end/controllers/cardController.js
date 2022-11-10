@@ -8,14 +8,14 @@ const getAllCards = async (req, res) => {
   const { userId } = req.user;
   // Use this to check for the user in the card
   const user = await User.findOne({ _id: userId });
-  const cards = await Card.find({ _id: { $in: user.groups } });
+  const cards = await Card.find({ group: { $in: user.groups } });
   res.status(StatusCodes.OK).json({ cards });
 };
 
 const createCard = async (req, res) => {
   const { group_name, title, question, answer } = req.body;
   const { userId } = req.user;
-  const group = await Group.find({ user: userId, name: group_name });
+  const group = await Group.findOne({ user: userId, name: group_name });
   if (!group) {
     throw new CustomError.BadRequestError(`Group does not exist `);
   }
