@@ -9,7 +9,7 @@ const groupCheckVerification = async (req, res, next) => {
   if (!user) {
     throw new CustomError.UnauthorizedError(`Not authorized to access`);
   }
-  adminVerify = user._id === group.admin;
+  adminVerify = user._id.equals(group.admin);
   req.admin = adminVerify;
   next();
 };
