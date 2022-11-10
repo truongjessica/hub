@@ -5,9 +5,10 @@ const CustomError = require("../errors");
 const User = require("../models/User");
 
 const getAllCards = async (req, res) => {
-  const { user } = req;
+  const { userId } = req.user;
   // Use this to check for the user in the card
-  const cards = await Card.find({ user: user.userId });
+  const user = await User.findOne({ _id: userId });
+  const cards = await Card.find({ _id: { $in: user.groups } });
   res.status(StatusCodes.OK).json({ cards });
 };
 
@@ -53,13 +54,9 @@ const updateCard = async (req, res) => {
 };
 
 const removeCard = async (req, res) => {
-  const title = await Flashcard.deleteOne({ title: req.params.title });
-  if (!title) {
-    throw new CustomError.NotFoundError(
-      `No card with title : ${req.params.title}`
-    );
-  }
-  res.status(StatusCodes.OK).send("Remove card");
+  const { id } = req.params;
+  const card = await Card.findByIdAndDelete({ _id: id });
+  res.status(StatusCodes.OK).json({ msg: `Card delete successfully` });
 };
 
 module.exports = {
