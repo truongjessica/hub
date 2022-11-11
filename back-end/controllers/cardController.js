@@ -7,27 +7,28 @@ const User = require("../models/User");
 const getAllCards = async (req, res) => {
   const { userId } = req.user;
   let { group_name } = req.body;
-  let group;
   let cards;
+  let user;
   if (group_name !== "") {
-    group = await Group.findOne({ name: group_name });
-  } else {
-    group = await Group.find({});
-  }
-  if (!group) {
-    throw new CustomError.BadRequestError(`Group does not exist `);
-  }
-  // Use this to check for the user in the card
-  const user = await User.findOne({ _id: userId, groups: { $in: group._id } });
-
-  if (!user) {
-    throw new CustomError.UnauthorizedError(`Not authorized `);
-  }
-  if (group_name) {
+    const group = await Group.findOne({ name: group_name });
+    if (!group) {
+      throw new CustomError.BadRequestError(`Group does not exist `);
+    }
+    user = await User.findOne({
+      _id: userId,
+      groups: { $in: group._id },
+    });
+    if (!user) {
+      throw new CustomError.UnauthorizedError(
+        `User is not authorized to access this card `
+      );
+    }
     cards = await Card.find({ group: group._id });
   } else {
+    user = await User.findOne({ _id: userId });
     cards = await Card.find({ group: { $in: user.groups } });
   }
+
   res.status(StatusCodes.OK).json({ cards, nb: cards.length });
 };
 

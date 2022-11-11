@@ -2,6 +2,7 @@ const Group = require("../models/Group");
 const { StatusCodes } = require("http-status-codes");
 const CustomError = require("../errors");
 const User = require("../models/User");
+const Card = require("../models/Flashcard");
 const mongoose = require("mongoose");
 const getAllGroups = async (req, res) => {
   const { userId } = req.user;
@@ -59,12 +60,13 @@ const removeGroup = async (req, res) => {
   await Group.deleteOne({ _id: id });
   // Delete any reference in the user array
   await User.updateMany({ $pull: { groups: id } });
+  await Card.deleteMany({ group: id });
   res.status(StatusCodes.OK).json({ msg: "Group delete successfully" });
 };
 const getMemberInGroup = async (req, res) => {
   const { id } = req.params;
   let groupId = mongoose.Types.ObjectId(id);
-  const group = await Group.findOne({ _id: id });
+  const group = await Group.findById({ _id: id });
   if (!group) {
     throw new CustomError.NotFoundError(`Can't find a group with name ${id}`);
   }
