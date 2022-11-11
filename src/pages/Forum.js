@@ -4,17 +4,20 @@ import Col from 'react-bootstrap/Col';
 import Post from '../components/Post';
 import GroupCard from '../components/GroupCard';
 import userIcon from '../images/user.png';
+import PostBox from '../components/PostBox';
 import './styles.css';
 
 var groups = [
-    { groupname:"All Groups", selected:true },
-    { groupname:"CS 2222", selected:false },
-    { groupname:"Senior Project", selected:false},
-    { groupname:"SE 4444.01", selected:false},
-    { groupname:"group 6", selected:false},
-    { groupname:"group 7", selected:false},
-    { groupname:"group 8", selected:false}
+    { groupname:"All Groups" },
+    { groupname:"CS 2222"},
+    { groupname:"Senior Project"},
+    { groupname:"SE 4444.01"},
+    { groupname:"group 6"},
+    { groupname:"group 7"},
+    { groupname:"group 8"}
 ]
+
+var seleceted = "All Groups"    // default to all groups when page loads
 
 var posts = [
     { name:"Jeffrey Byland", username:"@jland", message:"What day is the exam for section 501?", date:"05-01-22", image:userIcon, numHearts:5, numQuestions:3, numComments:2, comments:[{ name:"Nguyen Tran", username:"@nguyen", message:"October 25th in the Testing Center.", image:userIcon }, { name:"Jon Doe", username:"@jondoe", message:"Theres a test?", image:userIcon }] },
@@ -36,7 +39,7 @@ const Forum = () => {
                                 {groups.map((group) => (
                                     <GroupCard
                                         groupname={group.groupname}
-                                        selected={group.selected}
+                                        selected={group.groupname == seleceted}
                                     />
                                 ))}
                             </div>
@@ -56,6 +59,7 @@ const Forum = () => {
                         </Col>
                         <Col sm={7}>
                             <div class="pt-1 posts" style={{maxHeight:"50rem", overflow:"auto", boxShadow: "12px 0 10px -8px #d5d5d5, -12px 0 10px -8px #d5d5d5"}}>
+                                <PostBox />
                                 {posts.map((post) => (
                                 <Post
                                     name={post.name}
