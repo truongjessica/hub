@@ -22,7 +22,7 @@ const Navbar = () => {
           <div className="col-6">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <Link className="nav-link active" to="/">
+                <Link className="nav-link" to="/">
                   <h5>Home</h5>
                 </Link>
               </li>
@@ -51,7 +51,7 @@ const Navbar = () => {
           <div className="col">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <Link className="nav-link active" to="login">
+                <Link className="nav-link" to="login">
                   <h5>Login</h5>
                 </Link>
               </li>
