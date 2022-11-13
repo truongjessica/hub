@@ -41,6 +41,7 @@ const FlashCard = () => {
                 <GroupCard groupname={group.groupname} />
               ))}
             </div>
+            <Button primary>Add Card</Button>
           </Col>
         </Row>
       </Container>
