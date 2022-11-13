@@ -14,7 +14,7 @@ const PostBox = ({
                     <div className="post-field">
                         <textarea 
                             required 
-                            placeholder="Start Writting Here.." 
+                            placeholder="Write forum post here..." 
                             className="form-control" 
                         />
                     </div>
