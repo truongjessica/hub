@@ -10,7 +10,7 @@ const PostBox = ({
     return (
         <Wrapper>
             <form>
-                <div class="p-4">
+                <div class="ps-4 pe-4">
                     <div className="post-field">
                         <textarea 
                             required 
