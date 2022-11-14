@@ -26,16 +26,13 @@ const Home = () => {
         </Text2>
         <div className="sml">
           <ButtonStyle>
-            
-            
-          
                 <Link to="/register" > 
                 <Button>Register</Button>
                  </Link>
+      <Link to="/readmore">
+      <Button primary>Read More</Button>
+      </Link>
             
-              
-              
-            <Button primary>Read More</Button>
           </ButtonStyle>
         </div>
       </div>
