@@ -5,15 +5,28 @@ import Col from "react-bootstrap/Col";
 import GroupCard from "../components/GroupCard";
 import styled from "styled-components";
 import Card from "react-bootstrap/Card";
+import { useState } from "react";
+import CardListItem from "../components/CardListItem";
 
 var cards = [
-  { groupname: "Big O Notation" },
-  { groupname: "OOP" },
-  { groupname: "Compiler" },
-  { groupname: "JVM" },
+  { number: 0, question: "Big O Notation", answer: "Big O Notation a tool used to describe the time complexity of algorithms. It calculates the time taken to run an algorithm as the input grows" },
+  { number: 1, question: "OOP", answer: "Object-oriented programming (OOP) is a style of programming characterized by the identification of classes of objects closely linked with the methods" },
+  { number: 2, question: "Compiler", answer: "A compiler is a special program that translates a programming language's source code into machine code, bytecode or another programming language." },
+  { number: 3, question: "JVM", answer: "The Java virtual machine manages application memory and provides a portable execution environment for Java-based applications." },
 ];
 
 const FlashCard = () => {
+  const question ={
+    paddingTop: '170px', 
+    fontSize: "40px"
+  }
+  const answer ={
+    paddingTop: '170px', 
+    fontSize: "20px"
+  }
+  const end = cards.length
+  const [i, setI] = useState(0)
+  const [flip, setFlip] = useState(false)
   return (
     <div class="d-flex justify-content-center">
       <Container>
@@ -24,13 +37,14 @@ const FlashCard = () => {
                 <Card.Title>
                   MAIN FLASHCARD
                 </Card.Title>{" "}
-                <Card.Text></Card.Text>
+
+                <Card.Text style={ flip ? answer : question }>{flip ? cards[i].answer: cards[i].question}</Card.Text>
                 <div className="sml">
-          <ButtonStyle>
-            <Button>Flip</Button>
-            <Button primary>Next</Button>
-          </ButtonStyle>
-        </div>
+                  <ButtonStyle>
+                    <Button onClick={() => setFlip(!flip)}>Flip</Button>
+                    <Button onClick={() => {setI(i + (i < end-1 ? 1 : 0)); setFlip(i < end-1 && flip ? !flip : flip)}} primary>Next</Button>
+                  </ButtonStyle>
+                </div>
               </Card.Body>
             </Card>
           </Col>
@@ -38,7 +52,10 @@ const FlashCard = () => {
           <Col sm={5}>
             <div class="m-1 overflow-auto">
               {cards.map((group) => (
-                <GroupCard groupname={group.groupname} />
+                <CardListItem 
+                  groupname={group.question}
+                  number={group.number}
+                />
               ))}
             </div>
             <Button primary>Add Card</Button>
