@@ -10,6 +10,7 @@ import {
   JoinTeam,
   CreateTeam,
   Register,
+  ReadMore,
   Login,
 } from "./pages";
 import "./App.css";
@@ -32,6 +33,7 @@ function App() {
           <Route path="/meeting" element=<VideoCall /> />
           <Route path="/register" element=<Register /> />
           <Route path="/login" element=<Login /> />
+          <Route path="/readmore" element=<ReadMore /> />
           <Route path="*" element=<Error /> />
         </Route>
       </Routes>
