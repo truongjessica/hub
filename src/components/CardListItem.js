@@ -1,7 +1,10 @@
+import { Button } from "bootstrap"
+
 const CardListItem = ({
     groupname,
     number,
     selected,
+    func,
 }) => {
     const pressed ={
         boxShadow: "inset 0 0 10px #aeaeae",
@@ -16,7 +19,9 @@ const CardListItem = ({
 
     return (
     <div class="m-2 p-5" style={ selected ? pressed : unPressed }>
-        <div style={ selected ? {fontSize:'20px', color:'orange'} : {fontSize:'20px', color:'grey'} }>{ groupname }</div>
+        <button onClick={() => func(number)} style={ selected ? {fontSize:'200px', color:'orange', border:'none'} : {fontSize:'20px', border:'none', color:'grey', background:'none'} }>
+            { groupname }
+        </button>
     </div>
     );
 }
