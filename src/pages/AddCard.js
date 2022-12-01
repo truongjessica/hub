@@ -1,0 +1,68 @@
+import styled from "styled-components";
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
+const AddCard = ({
+
+}) => {
+
+
+    return (
+        <Wrapper>
+            <form>
+                <h3 className="text-center">Add Flash Card</h3>
+                <div class="ps-4 pe-4 pb-4">
+                    <div className="post-field">
+                        <label>Question</label>
+                        <input 
+                            name="Question"
+                            required 
+                            placeholder="Write question here..." 
+                            className="form-control" 
+                        />
+                    </div>
+                </div>
+                <div class="ps-4 pe-4">
+                    <div className="post-field">
+                        <label>Answer</label>
+                        <textarea 
+                            required 
+                            placeholder="Write asnwer here..." 
+                            className="form-control" 
+                        />
+                    </div>
+                </div>
+                <div class="d-flex justify-content-around">
+                    <div className="cancel-button">
+                        <button>
+                            Cancel
+                        </button>
+                    </div>
+                    <div className="post-button">
+                        <button>
+                            Post
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </Wrapper>
+    );
+}
+     
+const Wrapper = styled.section`
+  margin-top: 1.5rem;
+  max-width: 750px;
+  margin: 1.5rem auto;
+`;
+
+const Button = styled.button`
+  background:#F2831A ;
+  color: white;
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border: 2px solid #F2831A;
+  border-radius: 10px;
+`;
+
+export default AddCard;
