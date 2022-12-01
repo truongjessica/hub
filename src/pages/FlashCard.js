@@ -15,7 +15,17 @@ var cards = [
   { number: 3, question: "JVM", answer: "The Java virtual machine manages application memory and provides a portable execution environment for Java-based applications." },
 ];
 
+// const baseURL = "";
+
 const FlashCard = () => {
+  // const [cards, setCards] = React.useState(null);
+
+  // React.useEffect(() => {
+  //   axios.get(baseURL).then((response) => {
+  //     setCards(response.data);
+  //   });
+  // }, []);
+
   const func = (i) => {
     setI(i)
     setFlip(i < end-1 && flip ? !flip : flip)
@@ -64,7 +74,11 @@ const FlashCard = () => {
                 />
               ))}
             </div>
-            <Button primary>Add Card</Button>
+            <Button primary>
+              <a href="/add-card" style={{ color: "#FFFFFF", textDecoration: 'none'}}>
+                      Add Card
+              </a>
+            </Button>
           </Col>
         </Row>
       </Container>
