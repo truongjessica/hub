@@ -1,45 +1,53 @@
 import styled from "styled-components";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Collapsible from 'react-collapsible';
+import './styles.css';
 
 const PostBox = ({
-
+    
 }) => {
 
 
     return (
-        <Wrapper>
-            <form>
-                <div class="ps-4 pe-4">
-                    <div className="post-field">
-                        <textarea 
-                            required 
-                            placeholder="Write forum post here..." 
-                            className="form-control" 
-                        />
+        <div class="mt-3">
+            <Collapsible trigger="+">
+            <Wrapper>
+                <form>
+                    <div class="ps-4 pe-4">
+                        <div className="post-field">
+                            <textarea 
+                                required 
+                                placeholder="Write forum post here..." 
+                                className="form-control" 
+                            />
+                        </div>
                     </div>
-                </div>
-                <Row>
-                    <Col class="float-end ">
-                        <div className="cancel-button">
-                            <button>
-                                Cancel
-                            </button>
-                        </div>
-                    </Col>
-                    <Col class="float-end ">
-                        <div className="post-button">
-                            <button>
-                                Post
-                            </button>
-                        </div>
-                    </Col>
+                    <Row>
+                        <Col class="float-end ">
+                            <div className="cancel-button">
+                                <button>
+                                    Cancel
+                                </button>
+                            </div>
+                        </Col>
+                        <Col class="float-end ">
+                            <div className="post-button">
+                                <button>
+                                    Post
+                                </button>
+                            </div>
+                        </Col>
+                        
+                        
+                    </Row>
                     
-                    
-                </Row>
-                
-            </form>
-        </Wrapper>
+                </form>
+            </Wrapper>
+        </Collapsible>
+        </div>
+        
+        
     );
 }
      

@@ -5,6 +5,8 @@ import Post from '../components/Post';
 import GroupCard from '../components/GroupCard';
 import userIcon from '../images/user.png';
 import PostBox from '../components/PostBox';
+import styled from "styled-components";
+
 import './styles.css';
 
 var groups = [
@@ -57,7 +59,7 @@ const Forum = () => {
                             </Row>
                             
                         </Col>
-                        <Col sm={7}>
+                        <Col sm={7} >
                             <div class="pt-1 posts" style={{maxHeight:"50rem", overflow:"auto", boxShadow: "12px 0 10px -8px #d5d5d5, -12px 0 10px -8px #d5d5d5"}}>
                                 <PostBox />
                                 {posts.map((post) => (
@@ -74,13 +76,32 @@ const Forum = () => {
                                 />
                             ))}
                             </div>
-                            
                         </Col>
+                        
                     </Row> 
                 </Container>
+                <div  class="d-flex align-items-start">
+                    <Button >View Flash Cards</Button>
+                </div>
             </div>
         </div>
     );
 }
      
 export default Forum;
+
+const Button = styled.button`
+  background: ${(props) => (props.primary ? "orange" : "white")};
+  color: ${(props) => (props.primary ? "white" : "orange")};
+  margin-left: 0;
+  font-size: 1.5em;
+  margin-top: 300px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border: 2px solid orange;
+  border-radius: 10px;
+  transform:rotate(-90deg);
+  transform-origin: left top;
+  white-space: nowrap;
+`;
+

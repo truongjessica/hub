@@ -87,3 +87,21 @@ body {
 .post-field textarea {
     height: 150px;
 }
+
+.collapsible .content {
+    padding: 6px;
+    background-color: #eeeeee;
+}
+.collapsible .header {
+    background-color: #221717;
+    padding: 6px;
+    cursor: pointer;
+}
+
+.Collapsible__trigger {
+    font-size: 15px;
+    color: orange;
+    border: 1px solid orange;
+    padding: 0.5rem;
+    border-radius: 5px;
+  }
