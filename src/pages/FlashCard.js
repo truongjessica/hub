@@ -15,13 +15,20 @@ var cards = [
   { number: 3, question: "JVM", answer: "The Java virtual machine manages application memory and provides a portable execution environment for Java-based applications." },
 ];
 
-// const baseURL = "";
+// const allCardsURL = "https://hub-project.onrender.com/api/v1/cards";
+
+// var temp = {
+//   title: "",
+//   question: "",
+//   answer: "",
+//   group_name: "a group",
+// }
 
 const FlashCard = () => {
   // const [cards, setCards] = React.useState(null);
 
   // React.useEffect(() => {
-  //   axios.get(baseURL).then((response) => {
+  //   axios.get(allCardsURL, ).then((response) => {
   //     setCards(response.data);
   //   });
   // }, []);
@@ -66,10 +73,10 @@ const FlashCard = () => {
           
           <Col sm={5}>
             <div class="m-1 overflow-auto">
-              {cards.map((group) => (
+              {cards.map((group, index) => (
                 <CardListItem 
                   groupname={group.question}
-                  number={group.number}
+                  number={index}
                   func={func}
                 />
               ))}
