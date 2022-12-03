@@ -1,11 +1,12 @@
 const GroupCard = ({
     groupname,
     selected,
+    func,
 }) => {
     const pressed ={
         boxShadow: "inset 0 0 10px #aeaeae",
         borderRadius: '10px',
-        background: '#fafafa'
+        background: '#fafafa',
     }
 
     const unPressed ={
@@ -15,7 +16,7 @@ const GroupCard = ({
 
     return (
     <div class="m-2 p-5" style={ selected ? pressed : unPressed }>
-        <div style={ selected ? {fontSize:'20px', color:'orange'} : {fontSize:'20px', color:'grey'} }>{ groupname }</div>
+        <button onClick={() => func(groupname)} style={ selected ? {fontSize:'20px', color:'orange', border:'none', background:'none'} : {fontSize:'20px', color:'grey', border:'none', background:'none'} }>{ groupname }</button>
     </div>
     );
 }
