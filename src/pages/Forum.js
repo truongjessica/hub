@@ -6,6 +6,7 @@ import GroupCard from '../components/GroupCard';
 import userIcon from '../images/user.png';
 import PostBox from '../components/PostBox';
 import styled from "styled-components";
+import { useState } from "react";
 
 import './styles.css';
 
@@ -19,7 +20,7 @@ var groups = [
     { groupname:"group 8"}
 ]
 
-var seleceted = "All Groups"    // default to all groups when page loads
+// var seleceted = "All Groups"    // default to all groups when page loads
 
 var posts = [
     { name:"Jeffrey Byland", username:"@jland", message:"What day is the exam for section 501?", date:"05-01-22", image:userIcon, numHearts:5, numQuestions:3, numComments:2, comments:[{ name:"Nguyen Tran", username:"@nguyen", message:"October 25th in the Testing Center.", image:userIcon }, { name:"Jon Doe", username:"@jondoe", message:"Theres a test?", image:userIcon }] },
@@ -30,7 +31,11 @@ var posts = [
 ]
 
 const Forum = () => {
-    
+    const func = (groupName) => {
+        setSelected(groupName)
+      }
+
+    const [selected, setSelected] = useState("All Groups")
     return (
         <div>
             <div class="d-flex justify-content-center">
@@ -41,7 +46,8 @@ const Forum = () => {
                                 {groups.map((group) => (
                                     <GroupCard
                                         groupname={group.groupname}
-                                        selected={group.groupname == seleceted}
+                                        selected={group.groupname == selected}
+                                        func={func}
                                     />
                                 ))}
                             </div>
@@ -61,7 +67,9 @@ const Forum = () => {
                         </Col>
                         <Col sm={7} >
                             <div class="pt-1 posts" style={{maxHeight:"50rem", overflow:"auto", boxShadow: "12px 0 10px -8px #d5d5d5, -12px 0 10px -8px #d5d5d5"}}>
-                                <PostBox />
+                                {selected != "All Groups" &&
+                                    <PostBox />
+                                }
                                 {posts.map((post) => (
                                 <Post
                                     name={post.name}
@@ -80,9 +88,25 @@ const Forum = () => {
                         
                     </Row> 
                 </Container>
-                <div  class="d-flex align-items-start">
-                    <Button >View Flash Cards</Button>
-                </div>
+                {selected != "All Groups" &&
+                    <div >
+                        <div class="d-flex align-items-start">
+                            <Button Primary>
+                                <a href="/flash-cards" style={{color: "orange", textDecoration: 'none'}}>
+                                    View Flash Cards
+                                </a>
+                            </Button>
+                        </div>
+                        <div class="d-flex align-items-start">
+                            <Button style={{marginTop: 150, opacity: '50%'}}>Join Meeting</Button>
+                        </div>
+                        <div class="d-flex align-items-start">
+                            <Button style={{marginTop: 135, opacity: '50%'}}>View Notes</Button>
+                        </div>
+                    </div>
+                }
+                
+                
             </div>
         </div>
     );
@@ -103,5 +127,8 @@ const Button = styled.button`
   transform:rotate(-90deg);
   transform-origin: left top;
   white-space: nowrap;
+  box-shadow: 0 15px 41px rgba(0, 0, 0, 0.1)  ; 
+	-webkit-box-shadow: 0 15px 41px rgba(0, 0, 0, 0.1)  ; 
+	-moz-box-shadow: 0 15px 41px rgba(0, 0, 0, 0.1)  ; 
 `;
 
