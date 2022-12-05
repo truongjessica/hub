@@ -6,7 +6,9 @@ import GroupCard from '../components/GroupCard';
 import userIcon from '../images/user.png';
 import PostBox from '../components/PostBox';
 import styled from "styled-components";
+import NotLoggedIn from '../components/NotLoggedIn';
 import { useState } from "react";
+import { useGlobalState } from '../state/index.js';
 
 import './styles.css';
 
@@ -31,6 +33,8 @@ var posts = [
 ]
 
 const Forum = () => {
+    const [loggedIn] = useGlobalState("loggedIn")
+
     const func = (groupName) => {
         setSelected(groupName)
       }
@@ -38,76 +42,85 @@ const Forum = () => {
     const [selected, setSelected] = useState("All Groups")
     return (
         <div>
-            <div class="d-flex justify-content-center">
-                <Container>
-                    <Row>
-                        <Col sm={5} >
-                            <div class="group p-4" style={{maxHeight:"45rem", overflow:"auto"}}>
-                                {groups.map((group) => (
-                                    <GroupCard
-                                        groupname={group.groupname}
-                                        selected={group.groupname == selected}
-                                        func={func}
+            {!loggedIn ? (
+                <NotLoggedIn></NotLoggedIn>
+            ) : (
+                <div class="d-flex justify-content-center">
+                    <Container>
+                        <Row>
+                            <Col sm={5} >
+                                <div class="group p-4" style={{maxHeight:"45rem", overflow:"auto"}}>
+                                    {groups.map((group) => (
+                                        <GroupCard
+                                            groupname={group.groupname}
+                                            selected={group.groupname == selected}
+                                            func={func}
+                                        />
+                                    ))}
+                                </div>
+                                <Row >
+                                    <Col>
+                                        <div class="shadow-sm card p-2 mt-4 ms-5">
+                                            <a href="/create-team" style={{color: "orange", textDecoration: 'none'}}>
+                                                Create
+                                            </a>
+                                        </div>
+                                    </Col>
+                                    <Col>
+                                        <div class="shadow-sm card p-2 mt-4 me-5" style={{background: 'orange', color: 'white'}}>
+                                            <a href="/join-team" style={{color: "white", textDecoration: 'none'}}>
+                                                Join
+                                            </a>
+                                        </div>
+                                    </Col>
+                                </Row>
+                                
+                            </Col>
+                            <Col sm={7} >
+                                <div class="pt-1 posts" style={{maxHeight:"50rem", overflow:"auto", boxShadow: "12px 0 10px -8px #d5d5d5, -12px 0 10px -8px #d5d5d5"}}>
+                                    {selected != "All Groups" &&
+                                        <PostBox />
+                                    }
+                                    {posts.map((post) => (
+                                    <Post
+                                        name={post.name}
+                                        username={post.username}
+                                        message={post.message}
+                                        date={post.date}
+                                        image={post.image}
+                                        numHearts={post.numHearts}
+                                        numQuestions={post.numQuestions}
+                                        numComments={post.numComments}
+                                        comments={post.comments}
                                     />
                                 ))}
-                            </div>
-                            <Row >
-                                <Col>
-                                    <div class="shadow-sm card p-2 mt-4 ms-5">
-                                        Create
-                                    </div>
-                                </Col>
-                                <Col>
-                                    <div class="shadow-sm card p-2 mt-4 me-5" style={{background: 'orange', color: 'white'}}>
-                                        Join
-                                    </div>
-                                </Col>
-                            </Row>
+                                </div>
+                            </Col>
                             
-                        </Col>
-                        <Col sm={7} >
-                            <div class="pt-1 posts" style={{maxHeight:"50rem", overflow:"auto", boxShadow: "12px 0 10px -8px #d5d5d5, -12px 0 10px -8px #d5d5d5"}}>
-                                {selected != "All Groups" &&
-                                    <PostBox />
-                                }
-                                {posts.map((post) => (
-                                <Post
-                                    name={post.name}
-                                    username={post.username}
-                                    message={post.message}
-                                    date={post.date}
-                                    image={post.image}
-                                    numHearts={post.numHearts}
-                                    numQuestions={post.numQuestions}
-                                    numComments={post.numComments}
-                                    comments={post.comments}
-                                />
-                            ))}
+                        </Row> 
+                    </Container>
+                    {selected != "All Groups" &&
+                        <div >
+                            <div class="d-flex align-items-start">
+                                <Button Primary>
+                                    <a href="/flash-cards" style={{color: "orange", textDecoration: 'none'}}>
+                                        View Flash Cards
+                                    </a>
+                                </Button>
                             </div>
-                        </Col>
-                        
-                    </Row> 
-                </Container>
-                {selected != "All Groups" &&
-                    <div >
-                        <div class="d-flex align-items-start">
-                            <Button Primary>
-                                <a href="/flash-cards" style={{color: "orange", textDecoration: 'none'}}>
-                                    View Flash Cards
-                                </a>
-                            </Button>
+                            <div class="d-flex align-items-start">
+                                <Button style={{marginTop: 150, opacity: '50%'}}>Join Meeting</Button>
+                            </div>
+                            <div class="d-flex align-items-start">
+                                <Button style={{marginTop: 135, opacity: '50%'}}>View Notes</Button>
+                            </div>
                         </div>
-                        <div class="d-flex align-items-start">
-                            <Button style={{marginTop: 150, opacity: '50%'}}>Join Meeting</Button>
-                        </div>
-                        <div class="d-flex align-items-start">
-                            <Button style={{marginTop: 135, opacity: '50%'}}>View Notes</Button>
-                        </div>
-                    </div>
-                }
-                
-                
-            </div>
+                    }
+                    
+                    
+                </div>
+            )}
+            
         </div>
     );
 }

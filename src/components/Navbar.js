@@ -7,7 +7,7 @@ const Navbar = () => {
     <Wrapper>
       <nav class="navbar navbar-expand-lg bg-light">
         <div className="container-lg text-center">
-          <div className="col-4">
+          <div className="col-5">
             <Link className="nav-link active" to="/">
               <a
                 className="navbar-brand"
@@ -19,7 +19,7 @@ const Navbar = () => {
               </a>{" "}
             </Link>
           </div>
-          <div className="col-6">
+          <div className="col-5">
             <ul className="navbar-nav">
               <li className="nav-item">
                 <Link className="nav-link" to="/">
@@ -36,16 +36,16 @@ const Navbar = () => {
                   <h5>Forum</h5>
                 </Link>
               </li>
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <Link className="nav-link" to="flash-cards">
                   <h5>Flash Card</h5>
                 </Link>
-              </li>
-              <li className="nav-item">
+              </li> */}
+              {/* <li className="nav-item">
                 <Link className="nav-link" to="meeting">
                   <h5>Meeting</h5>
                 </Link>
-              </li>
+              </li> */}
             </ul>
           </div>
           <div className="col">
