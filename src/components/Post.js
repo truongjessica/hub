@@ -6,6 +6,7 @@ import Comment  from '../components/Comment';
 import Heart from '../images/heart.png';
 import Question from '../images/ask.png';
 import Speech from '../images/speech-bubble.png';
+import { useState } from 'react';
 
 const Post = ({
     name, 
@@ -18,7 +19,8 @@ const Post = ({
     numComments,
     comments
 }) => {
-    
+    const [heartCount, setHeartCount] = useState(0);
+    const [questionCount, setQuestionCount] = useState(0);
     return (
         <div>
             <div class="card p-1 mt-3 me-3 ms-3 mb-1 ">
@@ -46,16 +48,16 @@ const Post = ({
                         <Col  sm={5}>
                             <Row>
                                 <Col sm={1}>
-                                    <img class="float-start mt-1" style={{opacity: 0.80}} src={ Heart } alt="" width={20}/>
+                                    <img class="float-start mt-1" style={{opacity: 0.80}} src={ Heart } onClick={() => setHeartCount(heartCount + 1)} alt="" width={20}/>
                                 </Col>
                                 <Col sm={1}>
-                                    <div class="float-start" style={{opacity: 0.80}}>{numHearts}</div>
+                                    <div class="float-start" style={{opacity: 0.80}}>{heartCount}</div>
                                 </Col>
                                 <Col sm={1}>
-                                    <img class="float-start mt-1" style={{opacity: 0.80}} src={Question} alt="" width={20}/>
+                                    <img class="float-start mt-1" style={{opacity: 0.80}} src={Question} onClick={() => setQuestionCount(questionCount + 1)} alt="" width={20}/>
                                 </Col>
                                 <Col sm={1}>
-                                    <div class="float-start" style={{opacity: 0.80}}>{numQuestions}</div>
+                                    <div class="float-start" style={{opacity: 0.80}}>{questionCount}</div>
                                 </Col>
                                 <Col sm={1}>
                                     <img class="float-start mt-1" style={{opacity: 0.80}} src={Speech} alt="" width={20}/>
