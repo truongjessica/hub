@@ -1,29 +1,46 @@
+import axios from "axios";
 import React, { useState } from "react";
-import { useEffect } from "react";
 import styled from "styled-components";
 import { useUserContext } from "../context/user_context";
-const initialUser = {
-  email: "",
-  password: "",
-};
+import useLocalState from "../utils/localState";
+import { MAIN_ROOT } from "../url";
 const Login = () => {
-  const { login, user: userProfile } = useUserContext();
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    login(user);
-    setUser(initialUser);
-  };
+  const USER_URL = `${MAIN_ROOT}/auth/`;
+  const [values, setValues] = useState({
+    email: "",
+    password: "",
+  });
+  const { saveUser } = useUserContext();
+  const { alert, showAlert, loading, setLoading, hideAlert } = useLocalState();
   const handleChange = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
-    setUser({ ...user, [name]: value });
+    setValues({ ...values, [e.target.name]: e.target.value });
   };
-  const [user, setUser] = useState(initialUser);
-  useEffect(() => {
-    setUser(userProfile);
-  }, [userProfile]);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    hideAlert();
+    setLoading(true);
+    const { email, password } = values;
+    const loginUser = { email, password };
+    try {
+      const { data } = await axios.post(`${USER_URL}/login`, loginUser);
+      setValues({ name: "", email: "", password: "" });
+      showAlert({
+        text: `Welcome, ${data.user.name}. Redirecting to dashboard...`,
+        type: "success",
+      });
+      setLoading(false);
+      saveUser(data.user);
+      //redirect here when login
+    } catch (error) {
+      showAlert({ text: error.response.data.msg });
+      setLoading(false);
+    }
+  };
   return (
     <Wrapper>
+      {alert.show && (
+        <div className={`alert alert-${alert.type}`}>{alert.text}</div>
+      )}
       <form className="container-lg " onSubmit={handleSubmit}>
         <h3 className="text-center">Login</h3>
         <div className="mb-3">
@@ -31,7 +48,7 @@ const Login = () => {
           <input
             type="email"
             name="email"
-            value={user.email}
+            value={values.email}
             onChange={handleChange}
             className="form-control"
             placeholder="Enter email"
@@ -42,7 +59,7 @@ const Login = () => {
           <input
             type="password"
             name="password"
-            value={user.password}
+            value={values.password}
             onChange={handleChange}
             className="form-control"
             placeholder="Enter password"
@@ -51,9 +68,9 @@ const Login = () => {
         <div className="d-grid">
           <Button>Submit</Button>
         </div>
-        {/* <p className="forgot-password text-right">
+        <p className="forgot-password text-right">
           Forgot <a href="#">password?</a>
-        </p> */}
+        </p>
       </form>
     </Wrapper>
   );
@@ -65,13 +82,12 @@ const Wrapper = styled.section`
 `;
 
 const Button = styled.button`
-  background:#F2831A ;
+  background: #f2831a;
   color: white;
   font-size: 1em;
   margin: 1em;
   padding: 0.25em 1em;
-  border: 2px solid #F2831A;
+  border: 2px solid #f2831a;
   border-radius: 10px;
-  position: right:200px; top:400px;
 `;
 export default Login;

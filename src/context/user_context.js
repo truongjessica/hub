@@ -1,39 +1,57 @@
+import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
-import { useReducer } from "react";
-import {
-  LOGIN,
-  LOGOUT,
-  REGISTER,
-  ACTIVE_ACCOUNT,
-  FORGOT_PASSWORD,
-  RESET_PASSWORD,
-} from "../context/action";
-import reducer from "../reducers/users_reducer";
-const user = {};
+import { MAIN_ROOT } from "../url";
+const initialState = {
+  user: {},
+  error: {},
+};
 const UserContext = React.createContext();
 export const UserProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(reducer, user);
-
-  const login = async (info) => {
-    dispatch({ type: LOGIN, payload: info });
+  const USER_URL = `${MAIN_ROOT}/auth/`;
+  const [isLoading, setIsLoading] = useState(true);
+  const [user, setUser] = useState(null);
+  // Utils function
+  const saveUser = (user) => {
+    setUser(user);
+  };
+  const removeUser = () => {
+    setUser(null);
   };
   const logout = async () => {
-    dispatch({ type: LOGOUT });
+    try {
+      await axios.delete(`${USER_URL}/logout`);
+      removeUser();
+    } catch (error) {
+      console.log(error);
+    }
   };
-  const register = async (info) => {
-    dispatch({ type: REGISTER, payload: info });
+  const forgotPassword = async () => {};
+  const resetPassword = async () => {};
+  const activeAccount = async (info) => {};
+
+  const fetchUser = async () => {
+    try {
+      const { data } = await axios.get(`/api/v1/users/showMe`);
+      saveUser(data.user);
+    } catch (error) {
+      removeUser();
+    }
+    setIsLoading(false);
   };
-  const forgotPassword = async () => {
-    dispatch({ type: FORGOT_PASSWORD });
-  };
-  const resetPassword = async () => {
-    dispatch({ type: RESET_PASSWORD });
-  };
-  const activeAccount = async (info) => {
-    dispatch({ type: ACTIVE_ACCOUNT, payload: info });
-  };
+  useEffect(() => {
+    fetchUser();
+  }, []);
   return (
-    <UserContext.Provider value={{ login, user }}>
+    <UserContext.Provider
+      value={{
+        user,
+        logout,
+        saveUser,
+        forgotPassword,
+        resetPassword,
+        activeAccount,
+      }}
+    >
       {children}
     </UserContext.Provider>
   );

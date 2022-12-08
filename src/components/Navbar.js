@@ -9,14 +9,14 @@ const Navbar = () => {
         <div className="container-lg text-center">
           <div className="col-5">
             {/* <Link className="nav-link active" to="/"> */}
-              <a
-                className="navbar-brand"
-                href="/"
-                style={{ color: "green", fontWeight: "bold" }}
-              >
-                <img src={logo} style={{ width: "20%" }} />
-                Helper Hacker
-              </a>{" "}
+            <a
+              className="navbar-brand"
+              href="/"
+              style={{ color: "green", fontWeight: "bold" }}
+            >
+              <img src={logo} style={{ width: "20%" }} />
+              Helper Hacker
+            </a>{" "}
             {/* </Link> */}
           </div>
           <div className="col-5">
@@ -36,16 +36,6 @@ const Navbar = () => {
                   <h5>Forum</h5>
                 </Link>
               </li>
-              {/* <li className="nav-item">
-                <Link className="nav-link" to="flash-cards">
-                  <h5>Flash Card</h5>
-                </Link>
-              </li> */}
-              {/* <li className="nav-item">
-                <Link className="nav-link" to="meeting">
-                  <h5>Meeting</h5>
-                </Link>
-              </li> */}
             </ul>
           </div>
           <div className="col">
