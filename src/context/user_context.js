@@ -1,15 +1,15 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { MAIN_ROOT } from "../url";
-const initialState = {
-  user: {},
-  error: {},
-};
 const UserContext = React.createContext();
 export const UserProvider = ({ children }) => {
   const USER_URL = `${MAIN_ROOT}/auth/`;
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState(null);
+  const [groups, setGroups] = useState({
+    data: {},
+    nb_groups: 0,
+  });
   // Utils function
   const saveUser = (user) => {
     setUser(user);

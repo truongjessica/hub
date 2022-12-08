@@ -104,7 +104,7 @@ var posts = [
 ];
 
 const Forum = () => {
-  const { loggedIn } = useGlobalContext();
+  const loggedIn = true;
 
   const func = (groupName) => {
     setSelected(groupName);
@@ -126,10 +126,10 @@ const Forum = () => {
                 >
                   {groups.map((group, index) => (
                     <GroupCard
-                        key= {index}
-                        groupname={group.groupname}
-                        selected={group.groupname == selected}
-                        func={func}
+                      key={index}
+                      groupname={group.groupname}
+                      selected={group.groupname == selected}
+                      func={func}
                     />
                   ))}
                 </div>
@@ -172,16 +172,16 @@ const Forum = () => {
                   {selected != "All Groups" && <PostBox />}
                   {posts.map((post, index) => (
                     <Post
-                        key={index}
-                        name={post.name}
-                        username={post.username}
-                        message={post.message}
-                        date={post.date}
-                        image={post.image}
-                        numHearts={post.numHearts}
-                        numQuestions={post.numQuestions}
-                        numComments={post.numComments}
-                        comments={post.comments}
+                      key={index}
+                      name={post.name}
+                      username={post.username}
+                      message={post.message}
+                      date={post.date}
+                      image={post.image}
+                      numHearts={post.numHearts}
+                      numQuestions={post.numQuestions}
+                      numComments={post.numComments}
+                      comments={post.comments}
                     />
                   ))}
                 </div>

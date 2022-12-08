@@ -21,10 +21,10 @@ const Register = () => {
     e.preventDefault();
     hideAlert();
     setLoading(true);
-    const { email, password } = values;
-    const loginUser = { email, password };
+    const { email, password, name } = values;
+    const registerUser = { email, password, name };
     try {
-      const { data } = await axios.post(`${USER_URL}/register`, loginUser);
+      const { data } = await axios.post(`${USER_URL}/register`, registerUser);
       setValues({ name: "", email: "", password: "" });
       showAlert({
         text: `Please check your email to verify your account`,
@@ -37,53 +37,53 @@ const Register = () => {
       showAlert({ text: error.response.data.msg });
       setLoading(false);
     }
-    return (
-      <Wrapper>
-        <form onSubmit={handleSubmit}>
-          <h2 className="text-center">Register</h2>
-          <div className="mb-3">
-            <label>Name</label>
-            <input
-              type="text"
-              value={values.name}
-              name="firstName"
-              className="form-control"
-              placeholder="First name"
-              onChange={handleChange}
-            />
-          </div>
-          <div className="mb-3">
-            <label>Email address</label>
-            <input
-              type="email"
-              value={values.email}
-              name="email"
-              className="form-control"
-              placeholder="Enter email"
-              onChange={handleChange}
-            />
-          </div>
-          <div className="mb-3">
-            <label>Password</label>
-            <input
-              type="password"
-              value={values.password}
-              name="password"
-              className="form-control"
-              placeholder="Enter password"
-              onChange={handleChange}
-            />
-          </div>
-          <div className="d-grid">
-            <Button>Sign Up</Button>
-          </div>
-          <p className="forgot-password text-right">
-            Already registered? <a href="/login">Sign in</a>
-          </p>
-        </form>
-      </Wrapper>
-    );
   };
+  return (
+    <Wrapper>
+      <form onSubmit={handleSubmit}>
+        <h2 className="text-center">Register</h2>
+        <div className="mb-3">
+          <label>Name</label>
+          <input
+            type="text"
+            value={values.name}
+            name="name"
+            className="form-control"
+            placeholder="First name"
+            onChange={handleChange}
+          />
+        </div>
+        <div className="mb-3">
+          <label>Email address</label>
+          <input
+            type="email"
+            value={values.email}
+            name="email"
+            className="form-control"
+            placeholder="Enter email"
+            onChange={handleChange}
+          />
+        </div>
+        <div className="mb-3">
+          <label>Password</label>
+          <input
+            type="password"
+            value={values.password}
+            name="password"
+            className="form-control"
+            placeholder="Enter password"
+            onChange={handleChange}
+          />
+        </div>
+        <div className="d-grid">
+          <Button>Sign Up</Button>
+        </div>
+        <p className="forgot-password text-right">
+          Already registered? <a href="/login">Sign in</a>
+        </p>
+      </form>
+    </Wrapper>
+  );
 };
 const Wrapper = styled.section`
   margin-top: 1.5rem;
