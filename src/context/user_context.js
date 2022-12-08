@@ -1,11 +1,11 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { MAIN_ROOT } from "../url";
+import { PROD_ROOT } from "../url";
 const UserContext = React.createContext();
 export const UserProvider = ({ children }) => {
-  const USER_URL = `${MAIN_ROOT}/auth`;
   const [isLoading, setIsLoading] = useState(true);
+  const DEV_URL = "/api/v1/auth/logout";
+  const PROD_URL = `${PROD_ROOT}${DEV_URL}`;
   const [user, setUser] = useState(null);
   const [groups, setGroups] = useState({
     data: {},
@@ -20,7 +20,7 @@ export const UserProvider = ({ children }) => {
   };
   const logout = async () => {
     try {
-      await axios.delete(`${USER_URL}/logout`);
+      await axios.delete(`${DEV_URL}`);
       removeUser();
     } catch (error) {
       console.log(error);

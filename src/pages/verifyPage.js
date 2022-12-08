@@ -3,13 +3,14 @@ import { useLocation, Link } from "react-router-dom";
 import styled from "styled-components";
 import { useUserContext } from "../context/user_context";
 import axios from "axios";
-import { MAIN_ROOT } from "../url";
+import { PROD_ROOT } from "../url";
 function useQuery() {
   return new URLSearchParams(useLocation().search);
 }
 
 const VerifyPage = () => {
-  const USER_URL = `${MAIN_ROOT}/auth`;
+  const DEV_URL = "/api/v1/auth/verify-email";
+  const PROD_URL = `${PROD_ROOT}${DEV_URL}`;
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
   const { isLoading } = useUserContext();
@@ -19,7 +20,7 @@ const VerifyPage = () => {
     setLoading(true);
     try {
       console.log(query.get("token"));
-      const { data } = await axios.post(`${USER_URL}/verify-email`, {
+      const { data } = await axios.post(`${DEV_URL}`, {
         verificationToken: query.get("token"),
         email: query.get("email"),
       });

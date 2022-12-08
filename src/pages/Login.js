@@ -3,15 +3,14 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { useUserContext } from "../context/user_context";
 import useLocalState from "../utils/localState";
-import { MAIN_ROOT } from "../url";
-import { redirect } from "react-router-dom";
-import { useNavigate } from 'react-router-dom';
-
+import { useNavigate, Link } from "react-router-dom";
+import { MAIN_ROOT, PROD_ROOT } from "../url";
 const Login = () => {
+  const DEV_URL = "/api/v1/auth/login";
+  const PROD_URL = `${PROD_ROOT}${DEV_URL}`;
   var numberOfGroups = 1;
   const navigate = useNavigate();
 
-  const USER_URL = `${MAIN_ROOT}/auth/`;
   const [values, setValues] = useState({
     email: "",
     password: "",
@@ -28,7 +27,7 @@ const Login = () => {
     const { email, password } = values;
     const loginUser = { email, password };
     try {
-      const { data } = await axios.post(`${USER_URL}/login`, loginUser);
+      const { data } = await axios.post(`${DEV_URL}`, loginUser);
       setValues({ name: "", email: "", password: "" });
       showAlert({
         text: `Welcome, ${data.user.name}. Redirecting to dashboard...`,
@@ -38,9 +37,9 @@ const Login = () => {
       saveUser(data.user);
       //redirect here when login
       if (numberOfGroups == 0) {
-        navigate("/group")
+        navigate("/group");
       } else {
-        navigate("/forum")
+        navigate("/forum");
       }
     } catch (error) {
       showAlert({ text: error.response.data.msg });
@@ -80,7 +79,10 @@ const Login = () => {
           <Button>Submit</Button>
         </div>
         <p className="forgot-password text-right">
-          Forgot <a href="#">password?</a>
+          Don't have an account ?{" "}
+          <span>
+            <Link to="/register">Register</Link>
+          </span>
         </p>
       </form>
     </Wrapper>

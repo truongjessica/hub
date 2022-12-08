@@ -1,18 +1,18 @@
-import { useState, useEffect } from 'react';
-import styled from 'styled-components';
-import { Link, useHistory, Redirect } from 'react-router-dom';
-import FormRow from '../components/FormRow';
-import { useGlobalContext } from '../context';
-import useLocalState from '../utils/localState';
+import { useState, useEffect } from "react";
+import styled from "styled-components";
+import { Link, useHistory, Redirect } from "react-router-dom";
+import FormRow from "../components/FormRow";
+import { useGlobalContext } from "../context";
+import useLocalState from "../utils/localState";
 
-import axios from 'axios';
+import axios from "axios";
 
 function Login() {
   const { saveUser } = useGlobalContext();
   const history = useHistory();
   const [values, setValues] = useState({
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   });
   const { alert, showAlert, loading, setLoading, hideAlert } = useLocalState();
 
@@ -27,14 +27,14 @@ function Login() {
     const loginUser = { email, password };
     try {
       const { data } = await axios.post(`/api/v1/auth/login`, loginUser);
-      setValues({ name: '', email: '', password: '' });
+      setValues({ name: "", email: "", password: "" });
       showAlert({
         text: `Welcome, ${data.user.name}. Redirecting to dashboard...`,
-        type: 'success',
+        type: "success",
       });
       setLoading(false);
       saveUser(data.user);
-      history.push('/dashboard');
+      history.push("/dashboard");
     } catch (error) {
       showAlert({ text: error.response.data.msg });
       setLoading(false);
@@ -43,42 +43,42 @@ function Login() {
 
   return (
     <>
-      <Wrapper className='page'>
+      <Wrapper className="page">
         {alert.show && (
           <div className={`alert alert-${alert.type}`}>{alert.text}</div>
         )}
         <form
-          className={loading ? 'form form-loading' : 'form'}
+          className={loading ? "form form-loading" : "form"}
           onSubmit={onSubmit}
         >
           {/* single form row */}
           <FormRow
-            type='email'
-            name='email'
+            type="email"
+            name="email"
             value={values.email}
             handleChange={handleChange}
           />
           {/* end of single form row */}
           {/* single form row */}
           <FormRow
-            type='password'
-            name='password'
+            type="password"
+            name="password"
             value={values.password}
             handleChange={handleChange}
           />
           {/* end of single form row */}
-          <button type='submit' className='btn btn-block' disabled={loading}>
-            {loading ? 'Loading...' : 'Login'}
+          <button type="submit" className="btn btn-block" disabled={loading}>
+            {loading ? "Loading..." : "Login"}
           </button>
           <p>
             Don't have an account?
-            <Link to='/register' className='register-link'>
+            <Link to="/register" className="register-link">
               Register
             </Link>
           </p>
           <p>
-            Forgot your password?{' '}
-            <Link to='/forgot-password' className='reset-link'>
+            Forgot your password?{" "}
+            <Link to="/forgot-password" className="reset-link">
               Reset Password
             </Link>
           </p>

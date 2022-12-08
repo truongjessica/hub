@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import styled from "styled-components";
-import { MAIN_ROOT } from "../url";
+import { PROD_ROOT } from "../url";
 import { useUserContext } from "../context/user_context";
 import useLocalState from "../utils/localState";
 import axios from "axios";
 const Register = () => {
-  const USER_URL = `${MAIN_ROOT}/auth/`;
+  const DEV_URL = "/api/v1/auth/register";
+  const PROD_URL = `${PROD_ROOT}${DEV_URL}`;
   const [values, setValues] = useState({
     email: "",
     password: "",
@@ -24,7 +25,7 @@ const Register = () => {
     const { email, password, name } = values;
     const registerUser = { email, password, name };
     try {
-      const { data } = await axios.post(`${USER_URL}/register`, registerUser);
+      const { data } = await axios.post(`${DEV_URL}`, registerUser);
       setValues({ name: "", email: "", password: "" });
       showAlert({
         text: `Please check your email to verify your account`,

@@ -1,2 +1,5 @@
 // MAIN ROOT API
-export const MAIN_ROOT = "https://hub-project.onrender.com/api/v1";
+const MAIN_ROOT = "https://hub-project.onrender.com";
+const PROD_ROOT = "http://localhost:7000";
+
+export { MAIN_ROOT, PROD_ROOT };
