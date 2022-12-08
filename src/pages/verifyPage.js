@@ -1,28 +1,32 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, Link } from "react-router-dom";
 import styled from "styled-components";
-import { useGlobalContext } from "../context";
+import { useUserContext } from "../context/user_context";
 import axios from "axios";
+import { MAIN_ROOT } from "../url";
 function useQuery() {
   return new URLSearchParams(useLocation().search);
 }
-import { MAIN_ROOT } from "../url";
+
 const VerifyPage = () => {
-  const USER_URL = `${MAIN_ROOT}/auth/`;
+  const USER_URL = `${MAIN_ROOT}/auth`;
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
-  const { isLoading } = useGlobalContext();
+  const { isLoading } = useUserContext();
   const query = useQuery();
 
   const verifyToken = async () => {
     setLoading(true);
     try {
-      const { data } = await axios.post(`${USER_URL}/verify-email`, {
-        verificationToken: query.get("token"),
-        email: query.get("email"),
-      });
+      console.log(query.get("token"));
+      const { data } = await axios.post(
+        `https://hub-project.onrender.com/api/v1/auth/verify-email`,
+        {
+          verificationToken: query.get("token"),
+          email: query.get("email"),
+        }
+      );
     } catch (error) {
-      // console.log(error.response);
       setError(true);
     }
     setLoading(false);

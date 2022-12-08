@@ -12,7 +12,9 @@ import {
   Register,
   ReadMore,
   Login,
+  VerifyPage,
 } from "./pages";
+import ProtectedRoute from "./components/ProtectedRoute";
 import "./App.css";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -28,14 +30,40 @@ function App() {
           <Route index element=<Home />></Route>
           <Route path="/flash-cards" element=<FlashCard /> />
           <Route path="/add-card" element=<AddCard /> />
-          <Route path="/forum" element=<Forum /> />
-          <Route path="/group" element=<GroupSelectionPage /> />
-          <Route path="/join-team" element=<JoinTeam /> />
-          <Route path="/create-team" element=<CreateTeam /> />
+          <Route
+            path="/forum"
+            element=<ProtectedRoute>
+              <Forum />
+            </ProtectedRoute>
+          />
+          <Route
+            path="/group"
+            element=<ProtectedRoute>
+              <GroupSelectionPage />
+            </ProtectedRoute>
+          />
+          <Route
+            path="/join-team"
+            element=<ProtectedRoute>
+              <JoinTeam />
+            </ProtectedRoute>
+          />
+          <Route
+            path="/create-team"
+            element=<ProtectedRoute>
+              <CreateTeam />
+            </ProtectedRoute>
+          />
           <Route path="/meeting" element=<VideoCall /> />
           <Route path="/register" element=<Register /> />
+          <Route path="/user/verify-email" element=<VerifyPage /> />
           <Route path="/login" element=<Login /> />
-          <Route path="/readmore" element=<ReadMore /> />
+          <Route
+            path="/readmore"
+            element=<ProtectedRoute>
+              <ReadMore />
+            </ProtectedRoute>
+          />
           <Route path="*" element=<Error /> />
         </Route>
       </Routes>

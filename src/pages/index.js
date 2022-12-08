@@ -8,7 +8,7 @@ import Home from "./Home";
 import VideoCall from "./VideoCall";
 import Forum from "./Forum";
 import ReadMore from "./ReadMore";
-// import Login from "./Login";
+import VerifyPage from "./verifyPage";
 import Error from "./Error";
 export {
   FlashCard,
@@ -21,5 +21,6 @@ export {
   JoinTeam,
   Register,
   Login,
+  VerifyPage,
   ReadMore,
 };

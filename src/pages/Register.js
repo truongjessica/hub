@@ -40,6 +40,9 @@ const Register = () => {
   };
   return (
     <Wrapper>
+      {alert.show && (
+        <div className={`alert alert-${alert.type}`}>{alert.text}</div>
+      )}
       <form onSubmit={handleSubmit}>
         <h2 className="text-center">Register</h2>
         <div className="mb-3">

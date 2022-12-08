@@ -1,8 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { useUserContext } from "../context/user_context";
 const Navbar = () => {
-  var logo = require("../assets/logo.png");
+  const logo = require("../assets/logo.png");
+  const { user } = useUserContext();
   return (
     <Wrapper>
       <nav className="navbar navbar-expand-lg bg-light">
@@ -39,18 +41,24 @@ const Navbar = () => {
             </ul>
           </div>
           <div className="col">
-            <ul className="navbar-nav">
-              <li className="nav-item">
-                <Link className="nav-link" to="login">
-                  <h5>Login</h5>
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="register">
-                  <h5>Register</h5>
-                </Link>
-              </li>
-            </ul>
+            {user ? (
+              <ul className="navbar-nav">
+                <li className="nav-item">Name: {user.name}</li>
+              </ul>
+            ) : (
+              <ul className="navbar-nav">
+                <li className="nav-item">
+                  <Link className="nav-link" to="login">
+                    <h5>Login</h5>
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="register">
+                    <h5>Register</h5>
+                  </Link>
+                </li>
+              </ul>
+            )}
           </div>
         </div>
       </nav>
