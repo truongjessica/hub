@@ -1,5 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import Card from "react-bootstrap/Card";
+import { Link } from "react-router-dom";
 
 function GroupSelectionPage() {
   return (
@@ -15,25 +16,25 @@ function GroupSelectionPage() {
       >
         <div className="row">
           <div className="col-lg-6 mb-4">
-            <Card >
+            <Card>
               <Card.Body>
-                <a href="/create-team">
+                <Link to="/create-team">
                   <Card.Title style={{ color: "#F2831A" }}>
                     Create A Team
                   </Card.Title>{" "}
-                </a>
+                </Link>
                 <Card.Text></Card.Text>
               </Card.Body>
             </Card>
           </div>
           <div className="col-lg-6 mb-4">
-            <Card >
+            <Card>
               <Card.Body>
-              <a href="/join-team">
-                <Card.Title style={{ color: "#F2831A" }}>
-                  Join Your Team
-                </Card.Title>
-                </a>
+                <Link to="/join-team">
+                  <Card.Title style={{ color: "#F2831A" }}>
+                    Join Your Team
+                  </Card.Title>
+                </Link>
                 <Card.Text></Card.Text>
               </Card.Body>
             </Card>
