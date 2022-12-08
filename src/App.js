@@ -18,6 +18,7 @@ import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SharedLayout from "./pages/SharedLayout";
 import GroupSelectionPage from "./pages/GroupSelectionPage";
+import AddCard from "./pages/AddCard";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="/" element=<SharedLayout />>
           <Route index element=<Home />></Route>
           <Route path="/flash-cards" element=<FlashCard /> />
+          <Route path="/add-card" element=<AddCard /> />
           <Route path="/forum" element=<Forum /> />
           <Route path="/group" element=<GroupSelectionPage /> />
           <Route path="/join-team" element=<JoinTeam /> />

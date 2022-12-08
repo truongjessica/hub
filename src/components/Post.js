@@ -27,13 +27,13 @@ const Post = ({
                         <Col sm={1} class="me-5">
                             <img src={image} style={{opacity: 0.65}} alt="" width={50}/>
                         </Col>
-                        <Col sm={3}>
+                        <Col sm={4}>
                             <Row class="float-start ">
-                                <div class="text-start" style={{color:'orange'}}>{ name }</div>
-                                <div class="text-start" style={{opacity:0.4}}>{ username }</div>
+                                <div class="text-start" style={{color:'orange', marginLeft: '25px'}}>{ name }</div>
+                                <div class="text-start" style={{opacity:0.4, marginLeft: '25px'}}>{ username }</div>
                             </Row>
                         </Col>
-                        <Col sm={7}>
+                        <Col sm={6}>
                             <div class="text-end">{ date }</div>
                         </Col>
                     </Row>

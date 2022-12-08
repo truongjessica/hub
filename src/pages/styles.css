@@ -41,3 +41,64 @@
 .selectedGroup {
     background: black;
 }
+.cards {
+  /* position: absolute; */
+  /* top: 50%;
+  left: 50%; */
+  width: 500px;
+  height: 300px;
+  margin-top: 50px;
+  /* margin: 50px; */
+  /* margin-left: 200px; */
+  /* margin: -150px; */
+  /* float: left; */
+  perspective: 500px;
+}
+
+.content {
+  /* position: absolute; */
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+
+  transition: transform 1s;
+  transform-style: preserve-3d;
+}
+
+.cards:hover .content {
+  transform: rotateY( 180deg ) ;
+  transition: transform 0.5s;
+}
+
+.front,
+.back {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: white;
+  /* line-height: 300px; */
+  color: #03446A;
+  text-align: center;
+  font-size: 50px;
+  border-radius: 5px;
+  padding-top: 110px; 
+  backface-visibility: hidden;
+}
+
+.back {
+  background: #F2831A;
+  color: white;
+  transform: rotateY( 180deg );
+  padding: 20px;
+  padding-top: 100px; 
+  font-size: 20px;
+}
+
+/* .back-content {
+  margin-top: 170px; 
+  padding: 200px;
+} */
+
+.card-list::-webkit-scrollbar {
+  display: none;
+}
