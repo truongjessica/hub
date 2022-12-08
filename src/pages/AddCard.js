@@ -27,7 +27,7 @@ const AddCard = () => {
                         <label>Answer</label>
                         <textarea 
                             required 
-                            placeholder="Write asnwer here..." 
+                            placeholder="Write answer here..." 
                             className="form-control" 
                         />
                     </div>

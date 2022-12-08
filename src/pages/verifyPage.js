@@ -38,7 +38,7 @@ const VerifyPage = () => {
 
   if (loading) {
     return (
-      <Wrapper className="page">
+      <Wrapper className="page d-flex justify-content-center m-5">
         <h2>Loading...</h2>
       </Wrapper>
     );
@@ -46,14 +46,14 @@ const VerifyPage = () => {
 
   if (error) {
     return (
-      <Wrapper className="page">
+      <Wrapper className="page d-flex justify-content-center m-5">
         <h4>There was an error, please double check your verification link </h4>
       </Wrapper>
     );
   }
 
   return (
-    <Wrapper className="page">
+    <Wrapper className="page d-flex justify-content-center m-5">
       <h2>Account Confirmed</h2>
       <Link to="/login" className="btn">
         Please login
