@@ -11,6 +11,7 @@ import { useState } from "react";
 import { useGlobalState } from '../state/index.js';
 
 import './styles.css';
+import { Link } from 'react-router-dom';
 
 var groups = [
     { groupname:"All Groups" },
@@ -103,9 +104,9 @@ const Forum = () => {
                         <div >
                             <div class="d-flex align-items-start">
                                 <Button Primary>
-                                    <a href="/flash-cards" style={{color: "orange", textDecoration: 'none'}}>
+                                    <Link to="/flash-cards" state= {{groupName: selected}}  style={{color: "orange", textDecoration: 'none'}}>
                                         View Flash Cards
-                                    </a>
+                                    </Link>
                                 </Button>
                             </div>
                             <div class="d-flex align-items-start">
