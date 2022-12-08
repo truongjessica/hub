@@ -10,11 +10,11 @@ const PostBox = ({
 
 
     return (
-        <div class="mt-3">
+        <div className="mt-3">
             <Collapsible trigger="+">
             <Wrapper>
                 <form>
-                    <div class="ps-4 pe-4">
+                    <div className="ps-4 pe-4">
                         <div className="post-field">
                             <textarea 
                                 required 
@@ -24,14 +24,14 @@ const PostBox = ({
                         </div>
                     </div>
                     <Row>
-                        <Col class="float-end ">
+                        <Col className="float-end ">
                             <div className="cancel-button">
                                 <button>
                                     Cancel
                                 </button>
                             </div>
                         </Col>
-                        <Col class="float-end ">
+                        <Col className="float-end ">
                             <div className="post-button">
                                 <button>
                                     Post

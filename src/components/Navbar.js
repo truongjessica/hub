@@ -5,19 +5,19 @@ const Navbar = () => {
   var logo = require("../assets/logo.png");
   return (
     <Wrapper>
-      <nav class="navbar navbar-expand-lg bg-light">
+      <nav className="navbar navbar-expand-lg bg-light">
         <div className="container-lg text-center">
           <div className="col-5">
-            <Link className="nav-link active" to="/">
+            {/* <Link className="nav-link active" to="/"> */}
               <a
                 className="navbar-brand"
-                href="#"
+                href="/"
                 style={{ color: "green", fontWeight: "bold" }}
               >
                 <img src={logo} style={{ width: "20%" }} />
                 Helper Hacker
               </a>{" "}
-            </Link>
+            {/* </Link> */}
           </div>
           <div className="col-5">
             <ul className="navbar-nav">

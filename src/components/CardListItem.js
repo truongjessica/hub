@@ -18,7 +18,7 @@ const CardListItem = ({
     }
 
     return (
-    <div class="m-2 p-5" style={ selected ? pressed : unPressed }>
+    <div className="m-2 p-5" style={ selected ? pressed : unPressed }>
         <button onClick={() => func(number)} style={ selected ? {fontSize:'200px', color:'orange', border:'none'} : {fontSize:'20px', border:'none', color:'grey', background:'none'} }>
             { groupname }
         </button>

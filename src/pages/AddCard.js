@@ -11,7 +11,7 @@ const AddCard = () => {
         <Wrapper>
             <form>
                 <h3 className="text-center">Add Flash Card to {groupName}</h3>
-                <div class="ps-4 pe-4 pb-4">
+                <div className="ps-4 pe-4 pb-4">
                     <div className="post-field">
                         <label>Question</label>
                         <input 
@@ -22,7 +22,7 @@ const AddCard = () => {
                         />
                     </div>
                 </div>
-                <div class="ps-4 pe-4">
+                <div className="ps-4 pe-4">
                     <div className="post-field">
                         <label>Answer</label>
                         <textarea 
@@ -32,7 +32,7 @@ const AddCard = () => {
                         />
                     </div>
                 </div>
-                <div class="d-flex justify-content-around">
+                <div className="d-flex justify-content-around">
                     <div className="cancel-button">
                         <button>
                             Cancel

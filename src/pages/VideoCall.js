@@ -15,7 +15,7 @@ var cards = [
 
 const VideoCall = () => {
   return (
-    <div class="d-flex justify-content-center">
+    <div className="d-flex justify-content-center">
       <Container>
         <Row>
           <Col sm={7}>
@@ -35,7 +35,7 @@ const VideoCall = () => {
           </ButtonStyle>
         </div> */}
           <Col sm={5}>
-            <div class="m-1 overflow-auto">
+            <div className="m-1 overflow-auto">
               {cards.map((group) => (
                 <GroupCard groupname={group.groupname} />
               ))}

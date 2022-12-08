@@ -61,29 +61,29 @@ const FlashCard = () => {
   const [i, setI] = useState(0)
   const [flip, setFlip] = useState(false)
   return (
-    <div class="d-flex justify-content-center">
+    <div className="d-flex justify-content-center">
       <Container>
         <Row>
           <Col sm={7}>
             <Card style={{ height: '75%' }}>
               <Card.Body>
                 <Card.Title>{groupName} Flashcards</Card.Title>
-                <div class="d-flex align-items-center flex-column">
+                <div className="d-flex align-items-center flex-column">
 
-                  <div class="cards">
-                    <div class="content">
-                      <div class="front">
+                  <div className="cards">
+                    <div className="content">
+                      <div className="front">
                         {cards[i].question}
                       </div>
-                      <div class="back" >
-                        <div class="back-content">
+                      <div className="back" >
+                        <div className="back-content">
                           {cards[i].answer}
                         </div>
                         
                       </div>
                     </div>
                   </div>
-                  <div class="d-flex justify-content-around">
+                  <div className="d-flex justify-content-around">
                     <div className="sml">
                       <Button style={{color: '#F2831A', background: 'white'}}onClick={() => {setI(i - (i == 0 ? 0 : 1)); setFlip(i < end-1 && flip ? !flip : flip)}} primary>Prev</Button>
                     </div>
@@ -106,9 +106,10 @@ const FlashCard = () => {
           
           
           <Col sm={5}>
-            <div class="m-1 overflow-auto card-list" style={{maxHeight:"35rem", overflow:"auto"}}>
+            <div className="m-1 overflow-auto card-list" style={{maxHeight:"35rem", overflow:"auto"}}>
               {cards.map((group, index) => (
                 <CardListItem 
+                  key={index}
                   groupname={group.question}
                   number={index}
                   func={func}
