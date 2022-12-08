@@ -8,7 +8,7 @@ import PostBox from "../components/PostBox";
 import styled from "styled-components";
 import NotLoggedIn from "../components/NotLoggedIn";
 import { useState } from "react";
-import { useGlobalContext } from "../state/context";
+import { useGlobalContext } from "../context/context";
 
 import "./styles.css";
 import { Link } from "react-router-dom";

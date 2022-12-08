@@ -1,13 +1,17 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 import styled from "styled-components";
+import { useUserContext } from "../context/user_context";
 const initialUser = {
   email: "",
   password: "",
 };
 const Login = () => {
+  const { login, user: userProfile } = useUserContext();
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(user);
+    login(user);
+    setUser(initialUser);
   };
   const handleChange = (e) => {
     const name = e.target.name;
@@ -15,6 +19,9 @@ const Login = () => {
     setUser({ ...user, [name]: value });
   };
   const [user, setUser] = useState(initialUser);
+  useEffect(() => {
+    setUser(userProfile);
+  }, [userProfile]);
   return (
     <Wrapper>
       <form className="container-lg " onSubmit={handleSubmit}>
@@ -42,9 +49,7 @@ const Login = () => {
           />
         </div>
         <div className="d-grid">
-        <Button>
-            Submit
-        </Button>
+          <Button>Submit</Button>
         </div>
         {/* <p className="forgot-password text-right">
           Forgot <a href="#">password?</a>
