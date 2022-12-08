@@ -87,7 +87,7 @@ var posts = [
     image: userIcon,
     numHearts: 5,
     numQuestions: 3,
-    numComments: 2,
+    numComments: 0,
     comments: [],
   },
   {
@@ -98,7 +98,7 @@ var posts = [
     image: userIcon,
     numHearts: 5,
     numQuestions: 3,
-    numComments: 2,
+    numComments: 0,
     comments: [],
   },
 ];
