@@ -42,7 +42,7 @@ const FlashCard = () => {
   // }, []);
   // const groupName = location.state
   const location = useLocation()
-  const { groupName } = location.state
+  const { groupName } = location.state  // use for axios get
 
   const func = (i) => {
     setI(i)
@@ -62,12 +62,12 @@ const FlashCard = () => {
   const [flip, setFlip] = useState(false)
   return (
     <div class="d-flex justify-content-center">
-      <div>{groupName}</div>
       <Container>
         <Row>
           <Col sm={7}>
             <Card style={{ height: '75%' }}>
               <Card.Body>
+                <Card.Title>{groupName} Flashcards</Card.Title>
                 <div class="d-flex align-items-center flex-column">
 
                   <div class="cards">
@@ -116,9 +116,9 @@ const FlashCard = () => {
               ))}
             </div>
             <Button primary>
-              <a href="/add-card" style={{ color: "#FFFFFF", textDecoration: 'none'}}>
-                      Add Card
-              </a>
+              <Link to="/add-card" state={{ groupName: groupName }} style={{ color: "#FFFFFF", textDecoration: 'none'}}>
+                Add Card
+              </Link>
             </Button>
           </Col>
         </Row>
