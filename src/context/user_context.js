@@ -1,9 +1,10 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { MAIN_ROOT } from "../url";
 const UserContext = React.createContext();
 export const UserProvider = ({ children }) => {
-  const USER_URL = `${MAIN_ROOT}/auth/`;
+  const USER_URL = `${MAIN_ROOT}/auth`;
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState(null);
   const [groups, setGroups] = useState({

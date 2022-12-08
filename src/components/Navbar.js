@@ -1,10 +1,11 @@
 import React from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useUserContext } from "../context/user_context";
 const Navbar = () => {
   const logo = require("../assets/logo.png");
-  const { user } = useUserContext();
+  const { user, logout } = useUserContext();
   return (
     <Wrapper>
       <nav className="navbar navbar-expand-lg bg-light">
@@ -44,6 +45,16 @@ const Navbar = () => {
             {user ? (
               <ul className="navbar-nav">
                 <li className="nav-item">Name: {user.name}</li>
+                <li className="nav-item">
+                  <button
+                    className="btn"
+                    onClick={() => {
+                      logout();
+                    }}
+                  >
+                    Logout
+                  </button>
+                </li>
               </ul>
             ) : (
               <ul className="navbar-nav">

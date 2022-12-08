@@ -19,13 +19,10 @@ const VerifyPage = () => {
     setLoading(true);
     try {
       console.log(query.get("token"));
-      const { data } = await axios.post(
-        `https://hub-project.onrender.com/api/v1/auth/verify-email`,
-        {
-          verificationToken: query.get("token"),
-          email: query.get("email"),
-        }
-      );
+      const { data } = await axios.post(`${USER_URL}/verify-email`, {
+        verificationToken: query.get("token"),
+        email: query.get("email"),
+      });
     } catch (error) {
       setError(true);
     }
