@@ -23,47 +23,47 @@ const Post = ({
     const [questionCount, setQuestionCount] = useState(0);
     return (
         <div>
-            <div class="card p-1 mt-3 me-3 ms-3 mb-1 ">
+            <div className="card p-1 mt-3 me-3 ms-3 mb-1 ">
                 <Container >
                     <Row >
-                        <Col sm={1} class="me-5">
+                        <Col sm={1} className="me-3">
                             <img src={image} style={{opacity: 0.65}} alt="" width={50}/>
                         </Col>
-                        <Col sm={4}>
-                            <Row class="float-start ">
-                                <div class="text-start" style={{color:'orange', marginLeft: '25px'}}>{ name }</div>
-                                <div class="text-start" style={{opacity:0.4, marginLeft: '25px'}}>{ username }</div>
+                        <Col sm={3}>
+                            <Row className="float-start ">
+                                <div className="text-start" style={{color:'orange', marginLeft: '0px'}}>{ name }</div>
+                                <div className="text-start" style={{opacity:0.4, marginLeft: '0px'}}>{ username }</div>
                             </Row>
                         </Col>
                         <Col sm={6}>
-                            <div class="text-end">{ date }</div>
+                            <div className="text-end">{ date }</div>
                         </Col>
                     </Row>
                     <Row sm={10}>
                         <Col>
-                            <div class="float-start" style={{opacity: 0.80}}>{ message }</div>
+                            <div className="float-start" style={{opacity: 0.80}}>{ message }</div>
                         </Col>
                     </Row>
                     <Row sm={10}>
                         <Col  sm={5}>
                             <Row>
                                 <Col sm={1}>
-                                    <img class="float-start mt-1" style={{opacity: 0.80}} src={ Heart } onClick={() => setHeartCount(heartCount + 1)} alt="" width={20}/>
+                                    <img className="float-start mt-1" style={{opacity: 0.80}} src={ Heart } onClick={() => setHeartCount(heartCount + 1)} alt="" width={20}/>
                                 </Col>
                                 <Col sm={1}>
-                                    <div class="float-start" style={{opacity: 0.80}}>{heartCount}</div>
+                                    <div className="float-start" style={{opacity: 0.80}}>{heartCount}</div>
                                 </Col>
                                 <Col sm={1}>
-                                    <img class="float-start mt-1" style={{opacity: 0.80}} src={Question} onClick={() => setQuestionCount(questionCount + 1)} alt="" width={20}/>
+                                    <img className="float-start mt-1" style={{opacity: 0.80}} src={Question} onClick={() => setQuestionCount(questionCount + 1)} alt="" width={20}/>
                                 </Col>
                                 <Col sm={1}>
-                                    <div class="float-start" style={{opacity: 0.80}}>{questionCount}</div>
+                                    <div className="float-start" style={{opacity: 0.80}}>{questionCount}</div>
                                 </Col>
                                 <Col sm={1}>
-                                    <img class="float-start mt-1" style={{opacity: 0.80}} src={Speech} alt="" width={20}/>
+                                    <img className="float-start mt-1" style={{opacity: 0.80}} src={Speech} alt="" width={20}/>
                                 </Col>
                                 <Col sm={1}>
-                                    <div class="float-start" style={{opacity: 0.80}}>{numComments}</div>
+                                    <div className="float-start" style={{opacity: 0.80}}>{numComments}</div>
                                 </Col>
                             </Row>
                             
@@ -75,8 +75,9 @@ const Post = ({
                 </Container>
                 
             </div>
-            {comments.map((comment) => (
+            {comments.map((comment, index) => (
                     <Comment
+                        key={index}
                         name={comment.name}
                         username={comment.username}
                         message={comment.message}

@@ -12,10 +12,10 @@ const NotLoggedIn = () => {
 
     return (
         <div>
-            <div class="mt-4 p-4 d-flex justify-content-center" style={{ fontSize: "30px" }} >
+            <div className="mt-4 p-4 d-flex justify-content-center" style={{ fontSize: "30px" }} >
                 You need to be logged in to view this page.
             </div>
-            <a class="d-flex justify-content-center" href="/login" style={{ fontSize: "50px", color: "orange", textDecoration: 'none'}}>
+            <a className="d-flex justify-content-center" href="/login" style={{ fontSize: "50px", color: "orange", textDecoration: 'none'}}>
                 Log In
             </a>
         </div>

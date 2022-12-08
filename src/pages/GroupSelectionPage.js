@@ -5,7 +5,7 @@ function GroupSelectionPage() {
   return (
     <div className="GroupSelectionPage">
       <div
-        class="container"
+        className="container"
         style={{
           position: "absolute",
           left: "50%",
@@ -13,9 +13,9 @@ function GroupSelectionPage() {
           transform: "translate(-50%, -50%)",
         }}
       >
-        <div class="row">
-          <div class="col-lg-6 mb-4">
-            <Card hoverable>
+        <div className="row">
+          <div className="col-lg-6 mb-4">
+            <Card >
               <Card.Body>
                 <a href="/create-team">
                   <Card.Title style={{ color: "#F2831A" }}>
@@ -26,8 +26,8 @@ function GroupSelectionPage() {
               </Card.Body>
             </Card>
           </div>
-          <div class="col-lg-6 mb-4">
-            <Card hoverable>
+          <div className="col-lg-6 mb-4">
+            <Card >
               <Card.Body>
               <a href="/join-team">
                 <Card.Title style={{ color: "#F2831A" }}>

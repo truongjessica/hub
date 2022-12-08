@@ -116,25 +116,26 @@ const Forum = () => {
       {!loggedIn ? (
         <NotLoggedIn></NotLoggedIn>
       ) : (
-        <div class="d-flex justify-content-center">
+        <div className="d-flex justify-content-center">
           <Container>
             <Row>
               <Col sm={5}>
                 <div
-                  class="group p-4"
+                  className="group p-4"
                   style={{ maxHeight: "45rem", overflow: "auto" }}
                 >
-                  {groups.map((group) => (
+                  {groups.map((group, index) => (
                     <GroupCard
-                      groupname={group.groupname}
-                      selected={group.groupname == selected}
-                      func={func}
+                        key= {index}
+                        groupname={group.groupname}
+                        selected={group.groupname == selected}
+                        func={func}
                     />
                   ))}
                 </div>
                 <Row>
                   <Col>
-                    <div class="shadow-sm card p-2 mt-4 ms-5">
+                    <div className="shadow-sm card p-2 mt-4 ms-5">
                       <a
                         href="/create-team"
                         style={{ color: "orange", textDecoration: "none" }}
@@ -145,7 +146,7 @@ const Forum = () => {
                   </Col>
                   <Col>
                     <div
-                      class="shadow-sm card p-2 mt-4 me-5"
+                      className="shadow-sm card p-2 mt-4 me-5"
                       style={{ background: "orange", color: "white" }}
                     >
                       <a
@@ -160,7 +161,7 @@ const Forum = () => {
               </Col>
               <Col sm={7}>
                 <div
-                  class="pt-1 posts"
+                  className="pt-1 posts"
                   style={{
                     maxHeight: "50rem",
                     overflow: "auto",
@@ -169,17 +170,18 @@ const Forum = () => {
                   }}
                 >
                   {selected != "All Groups" && <PostBox />}
-                  {posts.map((post) => (
+                  {posts.map((post, index) => (
                     <Post
-                      name={post.name}
-                      username={post.username}
-                      message={post.message}
-                      date={post.date}
-                      image={post.image}
-                      numHearts={post.numHearts}
-                      numQuestions={post.numQuestions}
-                      numComments={post.numComments}
-                      comments={post.comments}
+                        key={index}
+                        name={post.name}
+                        username={post.username}
+                        message={post.message}
+                        date={post.date}
+                        image={post.image}
+                        numHearts={post.numHearts}
+                        numQuestions={post.numQuestions}
+                        numComments={post.numComments}
+                        comments={post.comments}
                     />
                   ))}
                 </div>
@@ -188,7 +190,7 @@ const Forum = () => {
           </Container>
           {selected != "All Groups" && (
             <div>
-              <div class="d-flex align-items-start">
+              <div className="d-flex align-items-start">
                 <Button Primary>
                   <Link
                     to="/flash-cards"
@@ -199,12 +201,12 @@ const Forum = () => {
                   </Link>
                 </Button>
               </div>
-              <div class="d-flex align-items-start">
+              <div className="d-flex align-items-start">
                 <Button style={{ marginTop: 150, opacity: "50%" }}>
                   Join Meeting
                 </Button>
               </div>
-              <div class="d-flex align-items-start">
+              <div className="d-flex align-items-start">
                 <Button style={{ marginTop: 135, opacity: "50%" }}>
                   View Notes
                 </Button>

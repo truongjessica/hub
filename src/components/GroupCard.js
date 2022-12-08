@@ -15,7 +15,7 @@ const GroupCard = ({
     }
 
     return (
-    <div class="m-2 p-5" style={ selected ? pressed : unPressed }>
+    <div className="m-2 p-5" style={ selected ? pressed : unPressed }>
         <button onClick={() => func(groupname)} style={ selected ? {fontSize:'20px', color:'orange', border:'none', background:'none'} : {fontSize:'20px', color:'grey', border:'none', background:'none'} }>{ groupname }</button>
     </div>
     );
