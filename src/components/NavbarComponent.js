@@ -13,10 +13,10 @@ export default class NavbarComponent extends Component {
                         </Navbar.Brand>
                         <Nav className="mr-auto">
                             <Nav.Link href="Home" style={{color:"#ff6325"}}>Home</Nav.Link>
-                            <Nav.Link class="nav-links" href="Team">Team</Nav.Link>
-                            <Nav.Link class="nav-links" href="Meeting">Meeting</Nav.Link>
-                            <Nav.Link class="nav-links" href="Login">Login</Nav.Link>
-                            <Nav.Link class="nav-links" href="Register">Register</Nav.Link>
+                            <Nav.Link className="nav-links" href="Team">Team</Nav.Link>
+                            <Nav.Link className="nav-links" href="Meeting">Meeting</Nav.Link>
+                            <Nav.Link className="nav-links" href="Login">Login</Nav.Link>
+                            <Nav.Link className="nav-links" href="Register">Register</Nav.Link>
                         </Nav>
                     </Container>
                 </Navbar>

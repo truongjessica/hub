@@ -1,17 +1,17 @@
 import styled from "styled-components";
+import { useLocation } from 'react-router-dom'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-const AddCard = ({
-
-}) => {
-
+const AddCard = () => {
+    const location = useLocation()
+    const { groupName } = location.state    // use for axios post
 
     return (
         <Wrapper>
             <form>
-                <h3 className="text-center">Add Flash Card</h3>
-                <div class="ps-4 pe-4 pb-4">
+                <h3 className="text-center">Add Flash Card to {groupName}</h3>
+                <div className="ps-4 pe-4 pb-4">
                     <div className="post-field">
                         <label>Question</label>
                         <input 
@@ -22,7 +22,7 @@ const AddCard = ({
                         />
                     </div>
                 </div>
-                <div class="ps-4 pe-4">
+                <div className="ps-4 pe-4">
                     <div className="post-field">
                         <label>Answer</label>
                         <textarea 
@@ -32,7 +32,7 @@ const AddCard = ({
                         />
                     </div>
                 </div>
-                <div class="d-flex justify-content-around">
+                <div className="d-flex justify-content-around">
                     <div className="cancel-button">
                         <button>
                             Cancel
