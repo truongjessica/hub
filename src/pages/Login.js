@@ -4,7 +4,13 @@ import styled from "styled-components";
 import { useUserContext } from "../context/user_context";
 import useLocalState from "../utils/localState";
 import { MAIN_ROOT } from "../url";
+import { redirect } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
+
 const Login = () => {
+  var numberOfGroups = 1;
+  const navigate = useNavigate();
+
   const USER_URL = `${MAIN_ROOT}/auth/`;
   const [values, setValues] = useState({
     email: "",
@@ -31,6 +37,11 @@ const Login = () => {
       setLoading(false);
       saveUser(data.user);
       //redirect here when login
+      if (numberOfGroups == 0) {
+        navigate("/group")
+      } else {
+        navigate("/forum")
+      }
     } catch (error) {
       showAlert({ text: error.response.data.msg });
       setLoading(false);
